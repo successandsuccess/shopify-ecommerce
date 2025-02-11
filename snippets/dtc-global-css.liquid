@@ -1,0 +1,9 @@
+
+{{ 'dtc-categories.css' | asset_url | stylesheet_tag }}
+{% if template contains 'product' %}
+  {% comment %}
+    style for accordions in PDP task id: DEV-5937
+  {% endcomment %}
+  {{- 'dtc-product-accordion.css' | asset_url | stylesheet_tag -}}
+{% endif %}
+

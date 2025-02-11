@@ -1,0 +1,296 @@
+{%- for block in section.blocks -%}
+  {%- if block.settings.logo -%}
+    
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{% style %}
+  {% for block in section.blocks %}
+    {% if block.settings.enable_logo_width == true %}
+      .block-{{ block.id }} .testimonial-logo{
+        max-width: {{ block.settings.logo_custom_width }}px;
+        margin: 0 auto;
+      }
+    {% endif %}
+  {% endfor %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+  @media (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="thumbnail-with-text-wrapper section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}" id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="testimonials">
+  <div class="page-width">
+    <div class="thumbnail-inner-wrap">
+      {% liquid
+        assign heading_id = blank
+        assign heading_classes = 'thumbnail-heading h2'
+        assign override_tag = 'div'
+      %}
+      {% render 'heading-text', tag: 'h2', id: heading_id, classes: heading_classes, contents: section.settings.heading, disable_heading_tag: section.settings.disable_heading_tag, override_tag: override_tag %}
+      <div class="testimonialList gallery-top">
+        <div class="swiper-wrapper">
+          {%- for block in section.blocks -%}
+            <div id="block-{{ block.id }}" aria-valuemax="{{ section.blocks.size }}" aria-valuemin="0" aria-valuenow="{{ forloop.index0 }}" aria-labelledby="block-lbl-{{block.id}}" role="slider" class="swiper-slide testimonial" {{ block.shopify_attributes }}>
+              {%- if block.settings.quote_text != blank -%}
+                <div class="testimonial__content" id="block-lbl-{{ block.id }}">
+                  {{ block.settings.quote_text }}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+        {% if section.settings.show_arrows %}
+          <div class="swiper-button-next slider-button slider-button--next">{% render 'slider-arrow' %}</div>
+          <div class="swiper-button-prev slider-button slider-button--prev">{% render 'slider-arrow' %}</div>
+        {% endif %}
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="testimonialNav gallery-thumbs">
+        <div class="swiper-wrapper">
+          {%- for block in section.blocks -%}
+            <div class="swiper-slide block-{{ block.id }}">
+              {%- if block.settings.simple_logo != blank -%}
+                <div class="testimonial-logo simple-logo{% if block.settings.active_logo == blank %} no-active-state{% endif %}">
+                  {{ block.settings.simple_logo | image_url: width: 300 | image_tag: class: 'testimonialNav__item', alt: block.settings.simple_logo.alt }}
+                </div>
+                {%- if block.settings.active_logo != blank -%}
+                  <div class="testimonial-logo active-logo hidden">
+                    {{ block.settings.active_logo | image_url: width: 300 | image_tag: class: 'testimonialNav__item', alt: block.settings.active_logo.alt }}
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  var galleryThumbs = new Swiper('.gallery-thumbs', {
+    spaceBetween: 10,
+    slidesPerView: {{ section.settings.slide_to_show }},
+    freeMode: true,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+      280: {
+        slidesPerView: 3.3,
+        spaceBetween: 37
+      },
+      992: {
+        slidesPerView: {{ section.settings.slide_to_show }},
+        spaceBetween: 32
+      }
+    }
+  });
+  var galleryTop = new Swiper('.gallery-top', {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+      swiper: galleryThumbs
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    {% if section.settings.autoplay %}
+    autoplay: {
+      delay: {{ section.settings.cycle_speed }}000, 
+      disableOnInteraction: false, 
+    }
+    {% else %}
+      autoplay: false,
+    {% endif %}
+  });
+ });
+</script>
+
+{% schema %}
+{
+  "name": "Thumbnail with Text",
+  "class": "section-thumbnail-with-text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_heading_tag",
+      "default": true,
+      "label": "t:sections.all.disable_heading_tag.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto rotate between testimonials",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show arrows",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "cycle_speed",
+      "min": 1,
+      "max": 38,
+      "step": 1,
+      "unit": "sec",
+      "label": "Change testimonials every",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "slide_to_show",
+      "min": 1,
+      "max": 25,
+      "step": 1,
+      "label": "Desktop Thumbnail Slide to Show",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "slide_to_show_mobile",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "label": "Mobile Thumbnail Slide to Show",
+      "default": 3
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.image-with-text.settings.mobile_padding.label",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.image-with-text.settings.mobile_padding_bottom.label",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "simple_logo",
+          "label": "Image (Simple state)"
+        },
+        {
+          "type": "image_picker",
+          "id": "active_logo",
+          "label": "Image (Active state)"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_logo_width",
+          "label": "Enable Logo Custom Width"
+        },
+        {
+          "type": "range",
+          "id": "logo_custom_width",
+          "min": 50,
+          "max": 150,
+          "step": 1,
+          "unit": "px",
+          "label": "Logo Custom Width",
+          "default": 100
+        },
+        {
+          "type": "html",
+          "id": "svg",
+          "label": "SVG"
+        },
+        {
+          "type": "textarea",
+          "id": "quote_text",
+          "label": "Quote",
+          "default": "<p>Share what your customers are saying about your products, your company...</p>",
+          "info": "For best results, keep the word count consistent in each quote."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Thumbnail with Text",
+      "settings": {
+      },
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

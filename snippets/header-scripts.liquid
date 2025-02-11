@@ -1,0 +1,100 @@
+
+{% comment %} JQuery, we should move this to async eventually but need to refactor {% endcomment %}
+<script src="{{ '3.7.0.jquery.min.js' | asset_url }}" type="text/javascript"></script>
+
+{% comment %} Yotpo scripts {% endcomment %}
+    <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/PdMlnCVfgQLAAwoNfbI-8w" defer="defer"></script>
+    <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/7cEWbTsA9cyPSTTorI8SSP5ueYuKrtvFW0CkhoEL?languageCode={{ localization.language.iso_code | escape }}" async></script>
+
+    <script type="text/javascript">
+        (function e(){var e=document.createElement("script");e.type="text/javascript",e.defer=true,e.src="//staticw2.yotpo.com/7cEWbTsA9cyPSTTorI8SSP5ueYuKrtvFW0CkhoEL/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+    </script>
+    
+{% comment %} Klaviyo scripts {% endcomment %}
+    <script  defer type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+    <script defer type="application/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=w4X3xe"></script>
+
+{% comment %} friendbuy {% endcomment %}
+    <script>
+        window['friendbuy'] = window['friendbuy'] || [];
+        window['friendbuy'].push(['widget', "b7F-kYr"]);
+        window['friendbuy'].push(['site', 'site-aa17eea0-twillory.com']);
+        window['friendbuy'].push(['track', 'customer',
+            {
+                id: '{{ customer.id }}',
+                email: '{{ customer.email }}',
+                first_name: '{{ customer.first_name }}',
+                last_name: '{{ customer.last_name }}'
+            }
+        ]);
+        (function (f, r, n, d, b, y) {
+            b = f.createElement(r), y = f.getElementsByTagName(r)[0];b.defer = 1;b.src = n;y.parentNode.insertBefore(b, y);
+        })(document, 'script', '//djnf6e5yyirys.cloudfront.net/js/friendbuy.min.js');
+    </script>
+
+{% comment %} Facebook script {% endcomment %}
+    <script>
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+{% comment %} Pinterest {% endcomment %}
+    <script type="text/javascript"  defer src="//assets.pinterest.com/js/pinit.js"></script>
+
+{% comment %} glegem {% endcomment %}
+    <script>
+        var glegem = window["glegem"] || function() {
+            (window["glegem"].q = window["glegem"].q || []).push(arguments)
+        };
+    </script>
+
+{% comment %} AddShoppers script {% endcomment %}
+    <script type="text/javascript">
+        var AddShoppersWidgetOptions = { 'loadCss': false, 'pushResponse': false };
+        (!function(){
+            var t=document.createElement("script");
+            t.type="text/javascript",
+            t.async=!0,
+            t.id="AddShoppers",
+            t.src="https://shop.pe/widget/widget_async.js#623ca12a27f7c34bdf17710d",
+            document.getElementsByTagName("head")[0].appendChild(t)
+        }());
+    </script>
+
+{% comment %} Google Optimize {% endcomment %}
+    <script defer src="https://www.googleoptimize.com/optimize.js?id=OPT-P2R9CMR"></script>
+
+{% comment %} RevenueRoll Tag Manager {% endcomment %}
+<script>!function(){"use strict";function l(e){for(var t=e,r=0,n=document.cookie.split(";");r<n.length;r++){var o=n[r].split("=");if(o[0].trim()===t)return o[1]}}function s(e){return localStorage.getItem(e)}function u(e){return window[e]}function A(e,t){e=document.querySelector(e);return t?null==e?void 0:e.getAttribute(t):null==e?void 0:e.textContent}var e=window,t=document,r="script",n="dataLayer",o="https://ss.twillory.com",a="",i="azpqbftcll",c="acb=aWQ9R1RNLVRUWlJDMjQ%3D&page=1",g="cookie",v="_shopify_y",E="",d=!1;try{var d=!!g&&(m=navigator.userAgent,!!(m=new RegExp("Version/([0-9._]+)(.*Mobile)?.*Safari.*").exec(m)))&&16.4<=parseFloat(m[1]),f="stapeUserId"===g,I=d&&!f?function(e,t,r){void 0===t&&(t="");var n={cookie:l,localStorage:s,jsVariable:u,cssSelector:A},t=Array.isArray(t)?t:[t];if(e&&n[e])for(var o=n[e],a=0,i=t;a<i.length;a++){var c=i[a],c=r?o(c,r):o(c);if(c)return c}else console.warn("invalid uid source",e)}(g,v,E):void 0;d=d&&(!!I||f)}catch(e){console.error(e)}var m=e,g=(m[n]=m[n]||[],m[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),t.getElementsByTagName(r)[0]),v=I?"&bi="+encodeURIComponent(I):"",E=t.createElement(r),f=(d&&(i=8<i.length?i.replace(/([a-z]{8}$)/,"kp$1"):"kp"+i),!d&&a?a:o);E.async=!0,E.src=f+"/"+i+".js?"+c+v,null!=(e=g.parentNode)&&e.insertBefore(E,g)}();</script>
+
+{% comment %} gempro {% endcomment %}
+  <link id="GEPIStyles" rel="stylesheet" href="//gex.global-e.com/gempro/css/1000028" />
+
+{% comment %} Font Awesome {% endcomment %}
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></noscript>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  {% comment %} Slick Slider, we should refactor to support async here in the future {% endcomment %}
+  <script src="{{ '1.9.slick.min.js' | asset_url }}" defer></script>
+  <link rel="stylesheet" href="{{  '1.9.slick.min.css'| asset_url }}" />
+
+{% comment %} MNTN Tracking Pixel {% endcomment %}
+    <script type="text/javascript">
+        (function(){"use strict";var e=null,b="4.0.0",
+        n="37396",
+        additional="term=value",
+        t,r,i;try{t=top.document.referer!==""?encodeURIComponent(top.document.referrer.substring(0,2048)):""}catch(o){t=document.referrer!==null?document.referrer.toString().substring(0,2048):""}try{r=window&&window.top&&document.location&&window.top.location===document.location?document.location:window&&window.top&&window.top.location&&""!==window.top.location?window.top.location:document.location}catch(u){r=document.location}try{i=parent.location.href!==""?encodeURIComponent(parent.location.href.toString().substring(0,2048)):""}catch(a){try{i=r!==null?encodeURIComponent(r.toString().substring(0,2048)):""}catch(f){i=""}}var l,c=document.createElement("script"),h=null,p=document.getElementsByTagName("script"),d=Number(p.length)-1,v=document.getElementsByTagName("script")[d];if(typeof l==="undefined"){l=Math.floor(Math.random()*1e17)}h="dx.mountain.com/spx?"+"dxver="+b+"&shaid="+n+"&tdr="+t+"&plh="+i+"&cb="+l+additional;c.type="text/javascript";c.src=("https:"===document.location.protocol?"https://":"http://")+h;v.parentNode.insertBefore(c,v)})()
+    </script>
+{% comment %} MNTN Tracking Pixel {% endcomment %}
+
+  {% comment %} Swiper quick fix {% endcomment %}
+  <link rel="stylesheet" href="{{ '11.swiper-bundle.min.css' | asset_url }}" />
+
+  <script src="{{ '11.swiper-bundle.min.js' | asset_url }}"></script>

@@ -1,0 +1,107 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+{% if section.settings.secondary_nav != blank %}
+  {{ 'component-collection-secondary-bar.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+{%- capture availability_filter_load -%}
+  {%- render 'availability-filter-check' -%}
+{%- endcapture -%}
+
+<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+  <div class="collection-hero__inner {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {%- unless section.settings.show_collection_image and collection.image -%}
+      <div class="collection-hero__text-wrapper page-width">
+        {% liquid
+          assign heading_id = blank
+          assign heading_classes = 'collection-hero__title h2'
+
+          if collection.metafields["global"]["seo_content"] != blank
+            assign heading_tag = 'h2'
+          else
+            assign heading_tag = 'h1'
+          endif
+
+          assign override_tag = 'div'
+        %}
+        {% render 'heading-text'
+          , tag: heading_tag
+          , id: heading_id
+          , classes: heading_classes
+          , contents: collection.title
+          , disable_heading_tag: section.settings.disable_heading_tag
+          , override_tag: override_tag %}
+
+        {%- if section.settings.show_collection_description -%}
+          <div class="collection-hero__description rte">{{ collection.description }}</div>
+        {%- endif -%}
+      </div>
+    {% endunless %}
+
+
+    {%- if section.settings.show_collection_image and collection.image -%}
+      <div class="collection-hero__image-container media gradient">
+        <picture>
+          <source srcset="{{ collection.image | image_url: width: 2048 }}" media="(min-width: 1400px)">
+          <source srcset="{{ collection.image | image_url: width: 1400 }}" media="(min-width: 769px)">
+          <source srcset="{{ collection.metafields.custom.mobile_banner | image_url: width: 800 }}" media="(min-width: 577px)">
+          <img srcset="{{ collection.metafields.custom.mobile_banner | image_url: width: 600 }}">
+        </picture>
+      </div>
+    {%- endif -%}
+  </div>
+  {% if section.settings.secondary_nav != blank %}
+  <div class="page-width collection__secondary-nav-container">
+      <ul class="collection__secondary-nav">
+        {% for link in section.settings.secondary_nav.links %}
+          <li>
+            <a {% if link.url == collection.url %}class="collection__secondary-nav__link collection__secondary-nav__link--active"{% endif %} href="{% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}{{ link.url }}{{ availability_filter_load }}{% else %}{{ link.url }}{% endif %}{% else %}{{ link.url }}{% endunless %}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+  </div>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.main-collection-banner.name",
+    "class": "section",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:sections.main-collection-banner.settings.paragraph.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "disable_heading_tag",
+        "default": true,
+        "label": "t:sections.all.disable_heading_tag.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_description",
+        "default": true,
+        "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_image",
+        "default": false,
+        "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+        "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+      },
+      {
+        "type": "link_list",
+        "id": "secondary_nav",
+        "label": "Secondary nav"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "background-1"
+      }
+    ]
+  }
+{% endschema %}

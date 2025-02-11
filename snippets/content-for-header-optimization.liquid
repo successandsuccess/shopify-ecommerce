@@ -1,0 +1,160 @@
+<!-- snippets/content-for-header.liquid -->
+<!-- Header hook for plugins ================================================== -->
+    {% comment %} Leave url_to_remove as 0 to remove all apps, or set to a number to remove a specific app. {% endcomment %}
+    
+    {% assign lines = content_for_header | newline_to_br | split: '<br />' %}
+    
+    <script>
+        // include any string part from the script url in this array to not load that script on homepage
+        const scripts_not_to_load = [
+            
+        ];
+        // include any string part from the script url in this array to not load that script on product page
+        const scripts_not_to_load_product = [
+            
+        ];
+        // include any string part from the script url in this array to not load that script on collection page
+        const scripts_not_to_load_collection = [
+            
+        ];
+        // include any string part from the script url in this array to not load that script on  content  pages
+        const scripts_not_to_load_pages = [
+            
+        ];
+        // include string part from the script url in this array to defer those scripts
+        const scripts_to_defer = [
+            'cdn-scripts.signifyd.com',
+            'analytics.getshogun.com',
+            'metafieldsmanager.thebestagency.com',
+            'yotpo.com',
+            'gorgias.com'
+        ];
+ 
+        window.is_homepage = false;
+        window.is_collection = false;
+        window.is_product = false;
+        window.is_page = false;
+        {% if template contains 'index' %}
+        window.is_homepage = true;
+        {% elsif template contains 'collection' %}
+        window.is_collection =  true;
+        {% elsif template contains 'product' %}
+        window.is_product =  true;
+        {% elsif template contains 'page' %}
+        window.is_page =  true;
+        {% endif %}
+        window.cc_index = 0;
+        window.markersNames = [];
+        function cc_marks (name) {
+            return {
+                name,
+                get start () {
+                return `${this.name}_start`;
+                },
+                get end () {
+                return `${this.name}_end`;
+                }
+            };
+        }
+        
+        function cc_load_script(script) {
+            // console.log("testing script: " + script);
+            // console.log(window.cc_index);
+ 
+            let load = true;
+ 
+            if( is_homepage ){
+                for( let i of scripts_not_to_load ){
+                    if( script.indexOf(i) != -1 ) {
+                        load = false;
+                        break;
+                    }
+                }
+            }
+            if( is_collection ){
+                for( let i of scripts_not_to_load_collection ){
+                    if( script.indexOf(i) != -1 ) {
+                        load = false;
+                        break;
+                    }
+                }
+            }
+            if( is_product ){
+                for( let i of scripts_not_to_load_product ){
+                    if( script.indexOf(i) != -1 ) {
+                        load = false;
+                        break;
+                    }
+                }
+            }
+            if( is_page ){
+                for( let i of scripts_not_to_load_pages ){
+                    if( script.indexOf(i) != -1 ) {
+                        load = false;
+                        break;
+                    }
+                }
+            }
+            
+            // console.log(load, is_homepage);
+            if( !load) {
+                return;
+            }
+ 
+            console.log("loading script: ", script);
+ 
+            var marker = cc_marks("marker_" + window.cc_index );
+            window.markersNames.push(marker);
+ 
+            var script_start = document.createElement('script');
+            script_start.text = "window.performance.mark(\"" + marker.start + "\");";
+                
+            var script_end = document.createElement('script');
+            script_end.text = "window.performance.mark(\"" + marker.end + "\");";
+                
+ 
+            
+            var s = document.createElement('script');
+            s.type = "text\/javascript";
+            // s.async = true;
+            for( let i of scripts_to_defer ){
+                if( script.indexOf(i) != -1 ) {
+                    s.defer = true;
+                    // console.log("deferring script: ", script);
+                    break;
+                }
+            }
+ 
+            s.src = script;
+            
+            // uncomment this to load at the head
+            // var scripts = document.getElementsByTagName('script');
+            // var x = scripts[0];
+            
+            // here the scripts are being loaded at the bottom
+            var scripts = document.getElementsByTagName('script');
+            var x = scripts[scripts.length - 1];
+            var n = x.nextSibling;
+
+            // console.log(x);
+            // comment this line for performance benchmarking
+            x.parentNode.insertBefore(s, x);
+ 
+            // uncomment these for performance benchmarking
+            // x.parentNode.insertBefore(script_start, n);
+            // x.parentNode.insertBefore(s, script_start.nextSibling);
+            // s.parentNode.insertBefore(script_end, s.nextSibling);
+            
+            window.cc_index++;
+        }
+    </script>
+    {% for line in lines %}
+        {% if line contains 'var urls' %}
+            {% assign arr_to_replace = "s.type = 'text/javascript';|s.async = true;|s.src = urls[i];|var x = document.getElementsByTagName('script')[0];|x.parentNode.insertBefore(s, x);" | split: "|" %} 
+            {% for i in arr_to_replace %}
+                {% assign content_for_header = content_for_header | replace: i, "" %}
+            {% endfor %}
+ 
+            {% assign content_for_header = content_for_header | replace: "var s = document.createElement('script');", "cc_load_script(urls[i]);" %}
+        {% endif %}
+    {% endfor %}

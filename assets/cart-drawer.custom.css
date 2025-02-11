@@ -1,0 +1,5 @@
+#CartDrawer-CartItems .cart-item__price-wrapper.bottom-right-price {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+}

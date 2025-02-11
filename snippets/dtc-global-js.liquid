@@ -1,0 +1,7 @@
+{% if template contains 'product' %}
+  {% comment %}
+    JS for accordions in PDP task id: DEV-5937
+  {% endcomment %}
+  <script src="{{- 'dtc-product-accordion.js' |  asset_url -}}" defer="defer"></script>
+
+{% endif %}

@@ -1,0 +1,27 @@
+{% assign product_meta = product.metafields.custom.care_instructions.value %}
+{% if product_meta != blank %}
+    <div class="product__accordion accordion quick-add-hidden care-instruction-block" {{ block.shopify_attributes }}>
+        <details id="Details-{{ block.id }}-{{ section.id }}">
+        <summary>
+            <div class="summary__title">
+            {% render 'icon-accordion', icon: block.settings.icon %}
+            <h2 class="h4 accordion__title inline-richtext">
+                {{ block.settings.heading }}
+            </h2>
+            </div>
+            {% render 'icon-caret' %}
+        </summary>
+        <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+            
+            <ul class="care-list">
+                {% for values in product_meta %}
+                    <li class="care-item">
+                        <img src="{{ values.icon | image_url }}"  class="tooltip-icon" alt="{{ values.care_icon.alt }}" height="25" width="34" loading="lazy"/>
+                        <p class="tooltip-text">{{ values.tooltip }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        </details>
+    </div>
+{% endif %}

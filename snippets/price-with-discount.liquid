@@ -1,0 +1,20 @@
+{% # theme-check-disable %}
+{% liquid
+  for discount in shop.metaobjects.discount.values
+    for collection_item in discount.specific_collections.value
+      if collection_item == collection or product_item.collections contains collection_item
+        if discount.single_item_price != blank
+          assign calculated_price = discount.single_item_price.value
+          assign original_price = discount.single_item_price.value
+          if localization.country.iso_code == 'US'
+            assign single_item_price = discount.single_item_price.value | money_without_trailing_zeros | remove: ' '
+            assign single_item_slash_price = discount.single_item_slash_price.value | money_without_trailing_zeros | remove: ' '
+          else
+            assign single_item_price = discount.single_item_price.value | money_without_trailing_zeros
+            assign single_item_slash_price = discount.single_item_slash_price.value | money_without_trailing_zeros
+          endif
+        endif
+      endif
+    endfor
+  endfor
+%}

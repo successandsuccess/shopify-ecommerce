@@ -1,0 +1,420 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "disable_heading_tag": true,
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "4bed8b1c-27c7-40f3-a711-1b0392d4ddcc": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16274471944379__4bed8b1c-27c7-40f3-a711-1b0392d4ddcc-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "TAILORED FOR PERFORMANCE",
+            "heading_size": "h1",
+            "disable_heading_tag": true
+          }
+        },
+        "template--16274471944379__4bed8b1c-27c7-40f3-a711-1b0392d4ddcc-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Every garment is crafted for fit, feel and function.",
+            "text_style": "body"
+          }
+        },
+        "template--16274471944379__4bed8b1c-27c7-40f3-a711-1b0392d4ddcc-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "BUILD YOUR WARDROBE",
+            "button_link_1": "https:\/\/twillory.com\/collections\/shirts",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16274471944379__4bed8b1c-27c7-40f3-a711-1b0392d4ddcc-heading-1",
+        "template--16274471944379__4bed8b1c-27c7-40f3-a711-1b0392d4ddcc-text-1",
+        "template--16274471944379__4bed8b1c-27c7-40f3-a711-1b0392d4ddcc-buttons-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "image": "shopify:\/\/shop_images\/hero-banner_d9dd4386-6035-4616-9417-869ddb8cfdf8.png",
+        "enable_image_opacity": true,
+        "image_opacity_color": "#000000",
+        "image_overlay_opacity": 20,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-left",
+        "show_text_box": true,
+        "custom_class": "about-banner-wrap",
+        "desktop_content_alignment": "left",
+        "enable_custom_width": false,
+        "custom_width": 58,
+        "section_link": "",
+        "color_scheme": "scheme-c5c53182-f9fd-4ccd-a3c3-3a8dd3d45a41",
+        "background_color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
+    "2514531a-6078-40f2-a314-bbd05d2706c3": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16274471944379__2514531a-6078-40f2-a314-bbd05d2706c3-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Clothes maintain the man - not the other way around.",
+            "heading_size": "h2",
+            "disable_heading_tag": true
+          }
+        },
+        "template--16274471944379__2514531a-6078-40f2-a314-bbd05d2706c3-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Our mission is to complete every man’s wardrobe with comfortable, convenient garments that are as easy on the wallet as they are to wear and care for.",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "template--16274471944379__2514531a-6078-40f2-a314-bbd05d2706c3-heading-1",
+        "template--16274471944379__2514531a-6078-40f2-a314-bbd05d2706c3-text-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "enable_image_opacity": true,
+        "image_opacity_color": "#000000",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "custom_class": "about-cloth-banner-wrap",
+        "desktop_content_alignment": "center",
+        "enable_custom_width": false,
+        "custom_width": 58,
+        "section_link": "",
+        "color_scheme": "scheme-c5c53182-f9fd-4ccd-a3c3-3a8dd3d45a41",
+        "background_color_scheme": "accent-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "5ac5d911-4aa9-444f-87b3-607adfdaa978": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--16274471944379__5ac5d911-4aa9-444f-87b3-607adfdaa978-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "How it started...",
+            "heading_size": "h1",
+            "disable_heading_tag": true
+          }
+        },
+        "template--16274471944379__5ac5d911-4aa9-444f-87b3-607adfdaa978-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Twillory was founded in 2014 by a group of neighborhood friends and families, hardworking immigrants from Europe and South America with deep experience in the garment industry.<br\/><br\/>We felt that what passed for \"performance\" menswear at the time didn't deserve an encore. We came together to raise the bar, innovating better and more appropriate fabrics to maximize performance and comfort.<\/p>",
+            "text_style": "body",
+            "emphasis_background_color": "#2B4391",
+            "emphasis_font_color": "#FFFFFF"
+          }
+        },
+        "template--16274471944379__5ac5d911-4aa9-444f-87b3-607adfdaa978-button-1": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify:\/\/collections\/best-sellers-1",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "template--16274471944379__5ac5d911-4aa9-444f-87b3-607adfdaa978-heading-1",
+        "template--16274471944379__5ac5d911-4aa9-444f-87b3-607adfdaa978-text-1",
+        "template--16274471944379__5ac5d911-4aa9-444f-87b3-607adfdaa978-button-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/how-it-started.webp",
+        "enable_image_opacity": false,
+        "image_opacity_color": "",
+        "image_opacity": 10,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "enable_custom_content_width": false,
+        "custom_content_width": "424px",
+        "content_layout": "no-overlap",
+        "image_disable_edge_padding": false,
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "enable_button_custom_color": false,
+        "button_bg_color": "",
+        "button_color": "",
+        "custom_class": "about-image-with-text",
+        "image_behavior": "none",
+        "mobile_image_placement": "image_first",
+        "mobile_content_alignment": "left",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "mobile_padding_top": 22,
+        "mobile_padding_bottom": 90
+      }
+    },
+    "b14af889-4a1f-4fa2-8a86-1980dad38525": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16274471944379__b14af889-4a1f-4fa2-8a86-1980dad38525-column-1": {
+          "type": "column",
+          "settings": {
+            "hide_from_countries": false,
+            "image": "shopify:\/\/shop_images\/image_32.png",
+            "title": "Better Fabrics",
+            "disable_heading_tag": true,
+            "text": "<p>Soft but durable for lasting comfort - no dry-clean or ironing necessary.<\/p>",
+            "link_label": "",
+            "link": "",
+            "enable_image_link": false,
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16274471944379__b14af889-4a1f-4fa2-8a86-1980dad38525-column-2": {
+          "type": "column",
+          "settings": {
+            "hide_from_countries": false,
+            "image": "shopify:\/\/shop_images\/image_32.png",
+            "title": "Better Fit",
+            "disable_heading_tag": true,
+            "text": "<p>Whether you live untucked or buttoned up, your Twillory size will always run true.<\/p>",
+            "link_label": "",
+            "link": "",
+            "enable_image_link": false,
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16274471944379__b14af889-4a1f-4fa2-8a86-1980dad38525-column-3": {
+          "type": "column",
+          "settings": {
+            "hide_from_countries": false,
+            "image": "shopify:\/\/shop_images\/image_32.png",
+            "title": "Better Price",
+            "disable_heading_tag": true,
+            "text": "<p>The more you buy, the more you save.<\/p>",
+            "link_label": "",
+            "link": "",
+            "enable_image_link": false,
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        }
+      },
+      "block_order": [
+        "template--16274471944379__b14af889-4a1f-4fa2-8a86-1980dad38525-column-1",
+        "template--16274471944379__b14af889-4a1f-4fa2-8a86-1980dad38525-column-2",
+        "template--16274471944379__b14af889-4a1f-4fa2-8a86-1980dad38525-column-3"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "show_overlay": false,
+        "custom_class": "about-multicolumn-wrap",
+        "desktop_content_position": "middle-center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "remove_padding_horizontal": false,
+        "color_scheme": "scheme-3811504b-567a-4228-a6e9-6630852040f3",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 66,
+        "padding_bottom": 64,
+        "mobile_padding_top": 37,
+        "mobile_padding_bottom": 9
+      }
+    },
+    "9150b998-16b9-4126-9767-7a49613ab931": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--16274471944379__9150b998-16b9-4126-9767-7a49613ab931-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "How it's going...",
+            "heading_size": "h1",
+            "disable_heading_tag": true
+          }
+        },
+        "template--16274471944379__9150b998-16b9-4126-9767-7a49613ab931-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Today, we continue to provide tailored garments that look as good as they feel. Every Twillory product is conceived and crafted for versatility, functionality and most importantly comfort - never simply to keep pace with trends.<br\/><br\/>What began as a heritage company has become a comfort-first catalyst for the evolution of menswear, uniquely poised for a fast-changing world where stuffy dress shirts are a thing of the past.<\/p>",
+            "text_style": "body",
+            "emphasis_background_color": "#2B4391",
+            "emphasis_font_color": "#FFFFFF"
+          }
+        },
+        "template--16274471944379__9150b998-16b9-4126-9767-7a49613ab931-button-1": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify:\/\/collections\/best-sellers-1",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "template--16274471944379__9150b998-16b9-4126-9767-7a49613ab931-heading-1",
+        "template--16274471944379__9150b998-16b9-4126-9767-7a49613ab931-text-1",
+        "template--16274471944379__9150b998-16b9-4126-9767-7a49613ab931-button-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/how-its-going.webp",
+        "enable_image_opacity": false,
+        "image_opacity_color": "",
+        "image_opacity": 10,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "enable_custom_content_width": true,
+        "custom_content_width": "424px",
+        "content_layout": "no-overlap",
+        "image_disable_edge_padding": false,
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "enable_button_custom_color": false,
+        "button_bg_color": "",
+        "button_color": "",
+        "custom_class": "about-image-with-text about-image-with-text--reverse",
+        "image_behavior": "none",
+        "mobile_image_placement": "image_first",
+        "mobile_content_alignment": "left",
+        "padding_top": 96,
+        "padding_bottom": 100,
+        "mobile_padding_top": 90,
+        "mobile_padding_bottom": 46
+      }
+    },
+    "about-trending-now": {
+      "type": "collection-list",
+      "blocks": {
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "thepoloshop",
+            "collection_custom_image": "shopify:\/\/shop_images\/trending-now-polos.webp",
+            "collection_custom_title": "",
+            "collection_custom_text": "Cut for casual comfort",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "suitsnblazers",
+            "collection_custom_image": "shopify:\/\/shop_images\/trending-now-blazers.webp",
+            "collection_custom_title": "",
+            "collection_custom_text": "Zero hassle, all style",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "7aafbe7f-7cec-4046-b972-95678e957988": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "all-shirts",
+            "collection_custom_image": "shopify:\/\/shop_images\/trending-now-all-blazers.webp",
+            "collection_custom_title": "",
+            "collection_custom_text": "Always soft, never wrinkled",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "all-performance",
+            "collection_custom_image": "shopify:\/\/shop_images\/trending-now-performance.webp",
+            "collection_custom_title": "",
+            "collection_custom_text": "Innovative fabrics tailored for the hustle",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        }
+      },
+      "block_order": [
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-1",
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-3",
+        "7aafbe7f-7cec-4046-b972-95678e957988",
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-2"
+      ],
+      "settings": {
+        "page_width": true,
+        "show_tite_tag_content": false,
+        "title": "Trending Now",
+        "disable_heading_tag": true,
+        "desc": "",
+        "heading_size": "h1",
+        "image_ratio": "custom",
+        "reduce_image_size": false,
+        "enable_desktop_slider": false,
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "shop_btn": "Shop Now",
+        "shop_btn_overlay": true,
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "custom_class": "",
+        "padding_top": 50,
+        "padding_bottom": 140,
+        "padding_top_mob": 44,
+        "padding_bottom_mob": 90
+      }
+    }
+  },
+  "order": [
+    "main",
+    "4bed8b1c-27c7-40f3-a711-1b0392d4ddcc",
+    "2514531a-6078-40f2-a314-bbd05d2706c3",
+    "5ac5d911-4aa9-444f-87b3-607adfdaa978",
+    "b14af889-4a1f-4fa2-8a86-1980dad38525",
+    "9150b998-16b9-4126-9767-7a49613ab931",
+    "about-trending-now"
+  ]
+}

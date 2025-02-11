@@ -1,0 +1,10 @@
+{% liquid
+    if disable_heading_tag
+      assign tag = override_tag
+    endif
+%}
+
+{% assign contents = contents | replace: '™', '<span class="trademark">™</span>' %}
+<{{ tag }} class="{{ classes }}" id="{{ id }}">
+    {{ contents }}
+</{{ tag }}>

@@ -1,0 +1,242 @@
+{% include 'shogun-content-handler' %}
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+    <style>
+      .product__description .reduction-code {
+        display: none;
+      }
+    </style>
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+  
+    {{ '//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js' | script_tag }}
+  
+    {% assign ProductIDArray = '' %}
+    {% assign ParentSKU = '' %}
+    {% assign ProductID = '' %}
+    {% for item in checkout.line_items %}
+      {% assign itemID = "'" | append: item.id | append: "'" %}
+      {% assign ProductIDArray = ProductIDArray | append: itemID | append: ', ' %}
+      {% assign parentSkus = " " | append: item.sku | split: " " %}
+      {% assign parentSkus = "'" | append: parentSkus[0] | append: "'" %}
+      {% assign ParentSKU = ParentSKU | append: parentSkus | append: ', ' %}
+      {% assign currentProductId = "'" | append: item.product.id | append: "'" %}
+      {% assign ProductID = ProductID | append: currentProductId | append: ', ' %}
+    {% endfor %}
+  
+    {% assign size = ProductIDArray | size | minus: 2 %}
+    {% assign ProductIDArray = ProductIDArray | slice: 0, size %}
+    {% assign size = ParentSKU | size | minus: 2 %}
+    {% assign ParentSKU = ParentSKU | slice: 0, size %}
+    {% assign size = ProductID | size | minus: 2 %}
+    {% assign ProductID = ProductID | slice: 0, size %}
+  
+    <script>      
+      var dataLayer = [];
+      dataLayer.push({
+        'ProductIDArray': [{{ ProductIDArray }}],
+        'ParentSKU': [{{ParentSKU}}],
+        'ProductID': [{{ProductID}}],
+      });
+      if(Shopify.Checkout.step == 'contact_information'){
+        dataLayer.push({'event': 'CheckoutPage',});
+      }
+    </script>
+  
+    {% if checkout.order_id %}
+      <script>
+        dataLayer.push({'Revenue': '{{ checkout.total_price | money_without_currency }}', 'OrderID': '{{ checkout.order_id }}', 'event': 'OrderConfirmation'});
+        fbq('track', 'Purchase', {
+          value: '{{ checkout.total_price | money_without_currency }}',
+          content_type: 'product',
+          content_ids: [{{ ParentSKU }}]
+        });
+      </script>
+    {% endif %}
+  
+    <!-- Start VWO Asynchronous Code -->
+    <script type='text/javascript'>
+      var _vwo_code = (function() {
+        var account_id = 401647,
+        settings_tolerance = 2000,
+        library_tolerance = 2500,
+        use_existing_jquery = false,
+
+        /* DO NOT EDIT BELOW THIS LINE */
+        f = false,
+        d = document;
+        return {
+          use_existing_jquery: function() {
+            return use_existing_jquery;
+          },
+          library_tolerance: function() {
+            return library_tolerance;
+          },
+          finish: function() {
+            if (! f) {
+              f = true;
+              var a = d.getElementById('_vis_opt_path_hides');
+              if (a) 
+                a.parentNode.removeChild(a);
+            }
+          },
+          finished: function() {
+            return f;
+          },
+          load: function(a) {
+            var b = d.createElement('script');
+            b.src = a;
+            b.type = 'text/javascript';
+            b.innerText;
+            b.onerror = function() {
+              _vwo_code.finish();
+            };
+            d.getElementsByTagName('head')[0].appendChild(b);
+          },
+          init: function() {
+            settings_timer = setTimeout('_vwo_code.finish()', settings_tolerance);
+            var a = d.createElement('style'),
+              b = 'body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',
+              h = d.getElementsByTagName('head')[0];
+            a.setAttribute('id', '_vis_opt_path_hides');
+            a.setAttribute('type', 'text/css');
+            if (a.styleSheet) 
+              a.styleSheet.cssText = b;
+              else 
+              a.appendChild(d.createTextNode(b));
+              h.appendChild(a);
+            this.load('//dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&r=' + Math.random());
+            return settings_timer;
+          }
+        };
+      }());
+      _vwo_settings_timer = _vwo_code.init();
+    </script>
+    <!-- End VWO Asynchronous Code -->
+    <!-- Start JustUno Code -->
+    <script data-cfasync="false">
+      window.ju_num = "0DCCF4F4-7947-4546-99FA-18910DC2BBDC";
+      window.asset_host = '//cdn.jst.ai/';
+      (function(i, s, o, g, r, a, m) {
+        i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        };
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', asset_host + 'vck.js', 'juapp');
+    </script>
+    <!-- End VWO JustUno Code -->
+  
+    {% render 'gtm' with position: 'header' %}
+  
+    <!-- Google Optimize -->
+    <script async src="https://www.googleoptimize.com/optimize.js?id=OPT-P2R9CMR"></script>
+    <!-- Yotpo Script -->
+    <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/PdMlnCVfgQLAAwoNfbI-8w" async></script>
+{% comment %} RevenueRoll Tag Manager {% endcomment %}
+<script>!function(){"use strict";function l(e){for(var t=e,r=0,n=document.cookie.split(";");r<n.length;r++){var o=n[r].split("=");if(o[0].trim()===t)return o[1]}}function s(e){return localStorage.getItem(e)}function u(e){return window[e]}function A(e,t){e=document.querySelector(e);return t?null==e?void 0:e.getAttribute(t):null==e?void 0:e.textContent}var e=window,t=document,r="script",n="dataLayer",o="https://ss.twillory.com",a="",i="azpqbftcll",c="acb=aWQ9R1RNLVRUWlJDMjQ%3D&page=1",g="cookie",v="_shopify_y",E="",d=!1;try{var d=!!g&&(m=navigator.userAgent,!!(m=new RegExp("Version/([0-9._]+)(.*Mobile)?.*Safari.*").exec(m)))&&16.4<=parseFloat(m[1]),f="stapeUserId"===g,I=d&&!f?function(e,t,r){void 0===t&&(t="");var n={cookie:l,localStorage:s,jsVariable:u,cssSelector:A},t=Array.isArray(t)?t:[t];if(e&&n[e])for(var o=n[e],a=0,i=t;a<i.length;a++){var c=i[a],c=r?o(c,r):o(c);if(c)return c}else console.warn("invalid uid source",e)}(g,v,E):void 0;d=d&&(!!I||f)}catch(e){console.error(e)}var m=e,g=(m[n]=m[n]||[],m[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),t.getElementsByTagName(r)[0]),v=I?"&bi="+encodeURIComponent(I):"",E=t.createElement(r),f=(d&&(i=8<i.length?i.replace(/([a-z]{8}$)/,"kp$1"):"kp"+i),!d&&a?a:o);E.async=!0,E.src=f+"/"+i+".js?"+c+v,null!=(e=g.parentNode)&&e.insertBefore(E,g)}();</script>
+  
+    {% comment %}
+    {% include "globale-checkout-css" %}
+    {% endcomment %}
+    <script type="text/javascript">
+      window.addEventListener("onPredictLoad", function (event) {
+        event.detail.predict.submitOrder({
+          brandKey: "{{ shop.permanent_domain }}",
+          orderId: "{{ order_id }}",
+          orderNumber: "{{ order_number }}"
+        });
+      })
+    </script>
+    <script type="text/javascript" async src="https://predict-v4.getwair.com/default/predict.js"></script>
+  
+  {% render 'shogun-head' %}
+</head>
+  <body  style="opacity: 1 !important;">
+    {% render 'gtm' with position: 'body' %}
+    {{ skip_to_content_link }}
+
+    <div class="banner" data-header>
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </div>
+  
+    {{ order_summary_toggle }}
+  
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main" role="main">
+          <div class="main__header">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </div>
+          <div class="main__content">
+            {{ content_for_layout }}
+          </div>
+          <div class="main__footer">
+            {{ content_for_footer }}
+          </div>
+        </div>
+        <div class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <style>
+      .order-summary__section__content .product__description__property {
+        color: red;
+        font-weight: 500;
+        display: none;
+      }
+
+      .order-summary__sections {
+        height: 25%;
+      }
+
+      .dtc-checkout-rebuy-widget {
+        display: none;
+      }
+    </style>
+  
+    {{ tracking_code }}
+    {% render 'revenueRoll-GTM-dataLayer' %}
+  
+    {% render 'checkout-scripts' %}
+  
+    {{ "swell-rewards.scss.css" | asset_url | stylesheet_tag }}
+    {% if order.created_at %}
+      <!-- {% include 'swell-post-checkout' %}-->
+    {% else %}
+      {% render 'swell-dropdown' %}
+    {% endif %}
+    {%- comment -%}
+      <div class="dtc-checkout-rebuy-widget" data-rebuy-id="59928"></div>
+    {%- endcomment -%}
+    {% comment %} <script async src="https://cdn.rebuyengine.com/onsite/js/rebuy.js?shop=twillory-test.myshopify.com"></script> {% endcomment %}
+    {% comment %}
+    {% include "globale-checkout-js" %}
+    {% endcomment %}
+  </body>
+</html>

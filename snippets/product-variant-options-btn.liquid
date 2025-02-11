@@ -1,0 +1,66 @@
+{% assign product_form_id = 'product-form-' | append: section.id %}
+
+{%- for value in option.values -%}
+  {%- liquid
+    assign selected_variant = ''
+    assign has_more_variant = false
+    assign has_more_variant_mobile = false
+
+    for variant in product.variants
+      assign option_name = option.name | handleize
+      if option_name == 'color'
+        assign variant_title = variant.title | split: ' / '
+        for variant_value in variant_title
+          if variant_value == value and variant.featured_image
+            assign selected_variant = variant.featured_image | image_url
+          endif
+        endfor
+      endif
+    endfor
+
+    assign option_size = option.values.size
+    if forloop.index > 5 and option_size > 5
+      assign has_more_variant = true
+    endif
+
+    assign option_size_mobile = option.values.size
+    if forloop.index > 4 and option_size_mobile > 4
+      assign has_more_variant_mobile = true
+    endif
+  -%}
+
+  <span class="color-wrapper{% if has_more_variant %} hidden{% endif %}{% if has_more_variant_mobile %} medium-hide small-hide{% endif %}">
+    <input
+      type="radio"
+      id="{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}"
+      aria-id="test-{{ option.position }}-{{ forloop.index0 }}"
+      name="{{ option.name }}-{{ product.id }}"
+      value="{{ value | escape }}"
+      form="{{ product_form_id }}"
+      class="color-input"
+      {% if option.selected_value == value %}
+      checked="checked"
+      {% endif %}
+      data-variant-image="{{ selected_variant }}">
+    <label
+      for="{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}"
+      class="color-label"
+      style="background-image: url({{ value | append: '.png' | file_url }}), url({{ selected_variant }});
+                    background-color: {{ value | split: ' ' | last | handle }}; "
+      data-option="{{ value }}">
+      <span class="option-label">{{ value -}}</span>
+    </label>
+
+  </span>
+  {% if has_more_variant %}
+    <span class="more-variants small-hide medium-hide">
+      + {{ option_size | minus: 5 }} more
+    </span>
+    {% if has_more_variant_mobile %}
+      <span class="more-variants large-up-hide">
+        + {{ option_size | minus: 4 }} more
+      </span>
+    {% endif %}
+    {% break %}
+  {% endif %}
+{%- endfor -%}

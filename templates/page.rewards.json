@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "aa2fcfed-3794-4d66-a8be-5d78e2191aee": {
+      "type": "custom-liquid",
+      "settings": {
+        "enable_desktop": true,
+        "enable_mobile": true,
+        "custom_liquid": "<!-- START YOTPO CODE -->\n\n<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"68944\"></div>\n\n<!-- END YOTPO CODE -->",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mob": 0,
+        "padding_bottom_mob": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "aa2fcfed-3794-4d66-a8be-5d78e2191aee"
+  ]
+}

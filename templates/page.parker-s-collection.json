@@ -1,0 +1,391 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "0fe61544-3604-4cee-b4b2-41110ab73676": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--16285548839099__0fe61544-3604-4cee-b4b2-41110ab73676-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Parker's Collection",
+            "heading_size": "h1"
+          }
+        },
+        "template--16285548839099__0fe61544-3604-4cee-b4b2-41110ab73676-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Shop the collection of clothing as seen styled by Parker York Smith.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__0fe61544-3604-4cee-b4b2-41110ab73676-heading-1",
+        "template--16285548839099__0fe61544-3604-4cee-b4b2-41110ab73676-text-1"
+      ],
+      "custom_css": [
+        ".disable-image-padding-width {max-width: 100%;}",
+        ".color-background-1 {background: rgba(35, 68, 150, 1);}",
+        ".image-with-text__media {border: none;}",
+        ".image-with-text__heading {color: white;}",
+        ".image-with-text__text p {color: white;}",
+        "@media screen and (max-width: 749px) {.disable-image-padding-width {padding-left: 0; } .image-with-text__heading.h1 {padding-top: 2rem; } .image-with-text__content {padding: 0 2rem; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/download_1.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "image_disable_edge_padding": true,
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_class": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 21,
+        "mobile_padding_bottom": 74
+      }
+    },
+    "bd13231b-ed06-400e-bde1-92098aded2d7": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-1": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Free Shipping</strong>",
+            "text": "<p>Orders $99+</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-2": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Free Returns</strong>",
+            "text": "<p>All orders</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-3": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Free Exchanges</strong>",
+            "text": "<p>All Orders</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-1",
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-2",
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-3"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "show_overlay": false,
+        "custom_class": "",
+        "desktop_content_position": "middle-center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "remove_padding_horizontal": false,
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 38,
+        "mobile_padding_bottom": 8
+      }
+    },
+    "3a22de81-be24-4d4c-baed-159f8a3f802e": {
+      "type": "multirow",
+      "blocks": {
+        "template--16285548839099__3a22de81-be24-4d4c-baed-159f8a3f802e-row-1": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/download.jpg",
+            "caption": "",
+            "heading": "Pants for any occasion.",
+            "text": "<p>We all have that one sibling that's more casual. When you wear a dress shirt, they wear a tee; if the situation calls for a black tie, they show up in a blazer with a pocket square. Meet the five-pocket brother of our popular Performance Pants, now available in six colors.</p>",
+            "button_label": "SHOP PANTS",
+            "button_link": "shopify://collections/all-pants"
+          }
+        },
+        "template--16285548839099__3a22de81-be24-4d4c-baed-159f8a3f802e-row-2": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/download_2.webp",
+            "caption": "",
+            "heading": "Blazers dressed up or down.",
+            "text": "<p>The Blazer of the future has arrived - Zero hassle, all style, and then some! These have extreme stretch, don't wrinkle, NEVER need dry cleaning (just throw them in the wash as if it's a tee), and are so versatile that you can wear them with your favorite pair of jeans.</p>",
+            "button_label": "SHOP BLAZERS",
+            "button_link": "shopify://products/performance-blazer-solid-navy"
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__3a22de81-be24-4d4c-baed-159f8a3f802e-row-1",
+        "template--16285548839099__3a22de81-be24-4d4c-baed-159f8a3f802e-row-2"
+      ],
+      "custom_css": [
+        "@media screen and (min-width: 750px) {.collapse-padding .image-with-text__grid:not(.image-with-text__grid--reverse) .image-with-text__content:not(.image-with-text__content--desktop-center) {padding-left: 20px; }}"
+      ],
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "mobile_content_alignment": "left",
+        "padding_top": 8,
+        "padding_bottom": 36
+      }
+    },
+    "635f4af8-ab9d-4fb7-a5c1-5ea978c4dd5e": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "",
+        "products_mentioned": [
+          "performance-pants-khaki",
+          "performance-polo-contrast",
+          "performance-five-pocket-pants",
+          "untuckables-barnyard-gingham"
+        ],
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "custom_class": "",
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "hide_arrows_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mob": 45,
+        "padding_bottom_mob": 45
+      }
+    },
+    "8000e0f8-d605-485b-9c2d-9a02a63365c5": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Similar Products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "",
+        "products_mentioned": [
+          "untuckables-barnyard-gingham"
+        ],
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "custom_class": "",
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "hide_arrows_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 36,
+        "padding_top_mob": 45,
+        "padding_bottom_mob": 45
+      }
+    },
+    "44263359-1f2a-4d11-92b4-6e540f9c36fa": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16285548839099__44263359-1f2a-4d11-92b4-6e540f9c36fa-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "PERFORMANCE POLO",
+            "heading_size": "h0"
+          }
+        },
+        "00271121-d046-4d31-bffa-87848d5144fe": {
+          "type": "text",
+          "settings": {
+            "text": "Whether you're golfing, dating, working or twerking (no judgment), do it in our Polo. It moves with you, doesn't let you break a sweat, and hidden buttons prevents \"Bacon Collar.\" If comfort is everything, then these polos are too.",
+            "text_style": "body"
+          }
+        },
+        "template--16285548839099__44263359-1f2a-4d11-92b4-6e540f9c36fa-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SHOP NOW",
+            "button_link_1": "shopify://products/performance-polo",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__44263359-1f2a-4d11-92b4-6e540f9c36fa-heading-1",
+        "00271121-d046-4d31-bffa-87848d5144fe",
+        "template--16285548839099__44263359-1f2a-4d11-92b4-6e540f9c36fa-buttons-1"
+      ],
+      "custom_css": [
+        "p {letter-spacing: normal; opacity: 1; color: white;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/download_3.webp",
+        "image_overlay_opacity": 60,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "custom_class": "",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-c5c53182-f9fd-4ccd-a3c3-3a8dd3d45a41",
+        "background_color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "10cee697-1caa-45ce-a5a9-4842031282af": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16285548839099__10cee697-1caa-45ce-a5a9-4842031282af-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Customer Reviews",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__10cee697-1caa-45ce-a5a9-4842031282af-heading-1"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "feeb7e7e-db84-43b2-9e81-02812a3efdfb": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-1": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Danny W.</strong>",
+            "text": "<p><em>\"This is a great polo and my new favorite polo. I've tried polos from all the big brands over the years and this is the most flattering, the easiest to care for, and travels the best.\"</em></p><h6>-  31 JAN 2022, PERFORMANCE POLO</h6>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-2": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Christine W.</strong>",
+            "text": "<p><em>\"I bought these [pants] as a gift for my husband as he was on the hunt for the \"perfect work pant.\" To say he loved these is an understatement. [...] He says he's never buying any other work pant from here on out, which says something!\"</em></p><h6>- 02 FEB 2022, PERFORMANCE PANTS</h6>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-3": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Jacqueline S.</strong>",
+            "text": "<p><em>\"This blazer accomplishes a near impossible feat: it is comfortable, fashionable, and does not require trips to the dry cleaner. Will be ordering another one soon.\"</em></p><h6> - 13 JAN 2022, PERFORMANCE BLAZER</h6>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-1",
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-2",
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-3"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "show_overlay": false,
+        "custom_class": "",
+        "desktop_content_position": "middle-center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "remove_padding_horizontal": false,
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 38
+      }
+    }
+  },
+  "order": [
+    "main",
+    "0fe61544-3604-4cee-b4b2-41110ab73676",
+    "bd13231b-ed06-400e-bde1-92098aded2d7",
+    "3a22de81-be24-4d4c-baed-159f8a3f802e",
+    "635f4af8-ab9d-4fb7-a5c1-5ea978c4dd5e",
+    "8000e0f8-d605-485b-9c2d-9a02a63365c5",
+    "44263359-1f2a-4d11-92b4-6e540f9c36fa",
+    "10cee697-1caa-45ce-a5a9-4842031282af",
+    "feeb7e7e-db84-43b2-9e81-02812a3efdfb"
+  ]
+}

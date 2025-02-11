@@ -1,0 +1,77 @@
+{% if position == 'header' %}
+  {% if template == 'product' %}
+
+  <script>
+  {% assign parentSku='' %}
+{% assign isMultifit = 'false' %}
+  {% for variant in product.variants %}
+    {% for option in variant.options %}
+        {% if option == 'Traditional' %}
+            {% assign isMultifit = 'true' %}
+              {% break %}  
+          {% endif %}                 
+      {% endfor %}
+  {% endfor %}
+      
+  {% if isMultifit == 'true' %}
+    {% assign parentSku = product.variants.first.sku | split: "T " %}
+  {% else %}
+      {% assign parentSku = product.variants.first.sku | split: " " %}
+  {% endif %}
+    
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+        'ParentSKU': '{{ parentSku[0] }}',
+        'ProductSKU': '{{ product.variants[0].sku }}',
+        'ProductID': '{{ product.id }}',
+        'event': 'ProductPage',
+    });
+  </script>
+
+{% endif %}
+
+<!-- Google Tag Manager -->
+<script>
+window.dataLayer = window.dataLayer || [];
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PJF7K3H');</script>
+<!-- End Google Tag Manager -->
+{% elsif position == 'body' %}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJF7K3H"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<script>
+{% if customer %}
+
+var segment_data = {
+'first_name':'{{ customer.first_name }}',
+'email': '{{ customer.email }}',
+'customerId': '{{ customer.id }}',
+'last_name': '{{ customer.last_name }}',
+'name': '{{ customer.name }}',
+'ordersCount': {{ customer.orders_count }},
+'phone': '{{ customer.phone }}',
+'total_spent': {{ customer.total_spent }}
+}
+
+fbq('init', '913034055387620', {
+  em: '{{ customer.email }}', 
+  fn: '{{ customer.first_name }}', 
+  ln: '{{ customer.last_name }}', 
+  ph: '{{ customer.phone }}',  
+});
+
+dataLayer.push({
+'event' : 'segment_pageview',
+'segment_data' : segment_data
+})
+{% endif %}
+</script>
+
+{% endif %}

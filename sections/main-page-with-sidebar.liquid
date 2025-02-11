@@ -1,0 +1,178 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .page__sidebar {
+    display: flex;
+    list-style: none;
+    column-gap: 12px;
+    padding: 0;
+    margin: 0;
+    margin-top: 25px;
+    margin-bottom: 40px;
+  }
+  .page__sidebar a { 
+    text-decoration: none;
+    padding: 8px 20px;
+    background: #F2F2F2;
+    color: #727272;
+    display: flex;
+    font-size: 14px;
+    border-radius: 2px;
+    text-align: center;
+    }
+    a.sidebar__link--active {
+    background: #2B4592;
+    color: #fff;
+    }
+  @media screen and (min-width: 750px) {
+    .page-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        column-gap: 75px;
+        margin-top: 70px;
+    }
+
+    .page__sidebar {
+        flex-direction: column;
+        column-gap: 0;
+        row-gap: 13px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .page__sidebar li {
+        list-style: none;
+        max-width: 288px;
+    }
+    .page__sidebar a { 
+        font-size: 13px;
+    }
+    a.sidebar__link--active {
+        background: #2B4592;
+        color: #fff;
+    }
+    .page__content {
+        max-width: 786px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width section-{{ section.id }}-padding">
+  <div class="page-container">
+    <ul class="page__sidebar">
+      <li><a href="#" id="page__sidebar-terms-link" class="page__sidebar-link page__sidebar-terms-link" onclick="updatePageContent('terms')">Terms & Conditions</a></li>
+      <li><a href="#" id="page__sidebar-privacy-link" class="page__sidebar-link page__sidebar-privacy-link" onclick="updatePageContent('privacy')">Privacy Policy</a></li>
+      <li><a href="#" id="page__sidebar-accessibility-link" class="page__sidebar-link page__sidebar-accessibility-link" onclick="updatePageContent('accessibility')">Accessibility Statement</a></li>
+    </ul>
+    <div class="page__content">
+      <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {{ page.title | escape }}
+      </h1>
+      <div class="rte {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    const privacyText = `{{ shop.privacy_policy }}`;
+    const termsText = `{{ shop.terms_of_service }}`;
+    const accessibilityTitle = `{{ pages['accessibility-statement'].title }}`
+    const accessibilityContent = `{{ pages['accessibility-statement'].content }}`;
+    
+    function updatePageContent(page) {
+      document.querySelectorAll('.page__sidebar-link').forEach(link => {
+        link.classList.remove('sidebar__link--active');
+      })
+      switch(page) {
+        case 'terms':
+          document.querySelector('.page__sidebar-terms-link').classList.add('sidebar__link--active');
+          document.querySelector('.page__content .main-page-title').innerHTML = 'Terms & Conditions';
+          document.querySelector('.page__content .rte').innerHTML = termsText;
+          break;
+        case 'privacy':
+          document.querySelector('.page__sidebar-privacy-link').classList.add('sidebar__link--active');
+          document.querySelector('.page__content .main-page-title').innerHTML = 'Privacy Policy';
+          document.querySelector('.page__content .rte').innerHTML = privacyText;
+          break;
+        case 'accessibility': 
+          document.querySelector('.page__sidebar-accessibility-link').classList.add('sidebar__link--active');
+          document.querySelector('.page__content .main-page-title').innerHTML = accessibilityTitle;
+          document.querySelector('.page__content .rte').innerHTML = accessibilityContent;
+          break;
+      }
+    }
+
+    var currentPageUrl = window.location.href;
+    if (currentPageUrl === 'https://twillory.com/pages/accessibility-statement') {
+      var sidebarLink = document.querySelector('a#page__sidebar-accessibility-link');
+      if (sidebarLink) {
+        sidebarLink.classList.add('sidebar__link--active');
+      }
+    } else if ( currentPageUrl === 'https://twillory.com/pages/privacy-policy') {
+      var sidebarLinkPolicy = document.querySelector('a#page__sidebar-privacy-link');
+      if (sidebarLinkPolicy) {
+        sidebarLinkPolicy.classList.add('sidebar__link--active');
+      }
+    } else if ( currentPageUrl === 'https://twillory.com/pages/terms') {
+      var sidebarLinkTerms = document.querySelector('a#page__sidebar-terms-link');
+      if (sidebarLinkTerms) {
+        sidebarLinkTerms.classList.add('sidebar__link--active');
+      }
+    }
+  
+    let getPageToPreview = window.location.href.split('#')[1];
+    const availableOptions = ['terms', 'privacy', 'accessibility'];
+    let matchesPage = availableOptions.includes(getPageToPreview);
+    
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "link_list",
+      "id": "sidebar_menu",
+      "label": "Sidebar menu"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

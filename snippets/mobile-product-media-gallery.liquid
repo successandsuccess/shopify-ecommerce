@@ -1,0 +1,87 @@
+{%- liquid
+  for tag in product.tags
+    if tag contains 'final sale'
+      assign final_sale_tag = true
+    elsif tag contains 'justadded'
+      assign new_tag = true
+    elsif tag contains 'tonaltee'
+      assign invisible_under_white_tag = true
+    elsif tag contains 'restocked'
+      assign restocked_tag = true
+    endif
+  endfor
+-%}
+
+<div class="product__media-mobile{% if product.media.size > 1 %} has-media-list-mobile{% endif %}">
+  {% if product.tags contains 'air_icon' %}
+    <span class="label-tag air product-label-tag">
+      <img
+        src="{{ 'air_icon-min.png' | asset_url }}"
+        width="80"
+        height="80"
+        loading="lazy"
+        alt="Air Label Icon">
+    </span>
+  {% endif %}
+  <div class="card-product-custom">
+    <div class="card__badge {{ settings.badge_position }}">
+      {%- if product.available == false -%}
+        <span id="NoMediaStandardBadge-{{ section_id }}-{{ product.id }}" class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">
+          {{- 'products.product.sold_out' | t -}}
+        </span>
+      {%- elsif invisible_under_white_tag -%}
+        <span id="NoMediaStandardBadge-{{ section_id }}-{{ product.id }}" class="badge sale color-{{ settings.sale_badge_color_scheme }}">
+          {{- 'products.product.invisible_under_white_badge' | t -}}
+        </span>
+      {%- elsif restocked_tag -%}
+        <span id="NoMediaStandardBadge-{{ section_id }}-{{ product.id }}" class="badge color-{{ settings.sold_out_badge_color_scheme }}">
+          {{- 'products.product.restocked_badge' | t -}}
+        </span>
+      {%- endif -%}
+    </div>
+  </div>
+  <div class="js-swiper" data-slider-total="{{ product.media.size }}">
+    <div class="product__media-slider swiper-wrapper">
+      {% comment %} ====== start slides ==== {% endcomment %}
+      {%- for media in product.media -%}
+        {%- liquid
+          assign media_position = media_position | default: 0 | plus: 1
+          if media_position > 1
+          endif
+        -%}
+        <div
+          class="product__media-slider__item swiper-slide"
+          data-swiper-index="{{ forloop.index0 }}"
+          {% if media.media_type == "image" %}
+          data-medi-slide-inex="{{ forloop.index }}"
+          data-media-color="data-color-{{ media.alt | handleize | downcase }}"
+          {% endif %}>
+          {% render 'product-thumbnail'
+            , media: media
+            , media_count: media_count
+            , position: media_position
+            , desktop_layout: section.settings.gallery_layout
+            , mobile_layout: section.settings.mobile_thumbnails
+            , loop: section.settings.enable_video_looping
+            , modal_id: section.id
+            , xr_button: true
+            , media_width: media_width
+            , media_fit: section.settings.media_fit
+            , constrain_to_viewport: section.settings.constrain_to_viewport
+            , lazy_load: false
+          %}
+        </div>
+      {%- endfor -%}
+    {% comment %} ===  end slides === {% endcomment %}
+    </div>
+  </div>
+
+  <div class="slider__controls-wrapper" style="margin-top: 8px;">
+    <button class="slick-prev slick-arrow swiper-prev" style=""></button>
+    <button class="slick-next slick-arrow swiper-next" style=""></button>
+    <div class="slider__controls">
+      <div class="slider__counter">
+        <span class="js-current-slide">1</span>/{{ product.media.size }}</div>
+    </div>
+  </div>
+</div>

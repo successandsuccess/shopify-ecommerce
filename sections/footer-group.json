@@ -1,0 +1,97 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "custom_liquid_XRdKPA": {
+      "type": "custom-liquid",
+      "settings": {
+        "enable_desktop": true,
+        "enable_mobile": true,
+        "custom_liquid": "<script>\n    window.ALBSS = {\n        event_key: 'a873557f-a479-49f9-911f-c80690ddfb00'\n    };\n<\/script>\n<script src=\"https:\/\/c.albss.com\/p\/l\/loader.iife.js\"><\/script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mob": 0,
+        "padding_bottom_mob": 0
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "6da07817-b3d4-4abd-8ab1-bebefa7da5d7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image-11.png",
+            "image_width": 200,
+            "alignment": "",
+            "footer_image_text": "Timeless craftsmanship, timely styles, and tailored fits. Always at a fair price."
+          }
+        },
+        "footer-1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "SHOP",
+            "menu": "shop"
+          }
+        },
+        "footer-0": {
+          "type": "link_list",
+          "settings": {
+            "heading": "About",
+            "menu": "footer-two"
+          }
+        },
+        "9eaa26c6-9df6-4522-ac9c-537193e3b30b": {
+          "type": "link_list_social",
+          "settings": {
+            "heading": "FOLLOW US",
+            "show_social": true
+          }
+        },
+        "newsletter_dU4MyG": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_heading": "BE THE FIRST TO KNOW",
+            "mobile_newsletter_heading": "BE THE FIRST TO KNOW",
+            "newsletter_content": "<p>Just the good stuff - no spam; gentleman's promise.<\/p>",
+            "footer_image_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "6da07817-b3d4-4abd-8ab1-bebefa7da5d7",
+        "footer-1",
+        "footer-0",
+        "9eaa26c6-9df6-4522-ac9c-537193e3b30b",
+        "newsletter_dU4MyG"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1adff62f-6e94-4fcb-90ac-63cf2568d7f5",
+        "menu": "",
+        "enable_follow_on_shop": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": false,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 88,
+        "padding_bottom": 36,
+        "padding_top_mob": 57,
+        "padding_bottom_mob": 36
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_XRdKPA",
+    "footer"
+  ]
+}

@@ -1,0 +1,62 @@
+<script>
+    if(!window.PomFirstLoad){
+        if(typeof(Spurit) === 'undefined'){
+            var Spurit = {};
+        }
+        if(!Spurit.Preorder2){
+            Spurit.Preorder2 = {};
+        }
+        if(!Spurit.Preorder2.snippet){
+        Spurit.Preorder2.snippet = {};
+        }
+        if(!Spurit.Preorder2.snippet.products){
+        Spurit.Preorder2.snippet.products = {};
+        }
+        Spurit.Preorder2.snippet.shopHash = 'a63f43218ac536cb7e9d36de03b64aa7';
+        Spurit.Preorder2.snippet.cacheTimestamp = 1698293278;
+
+        if(typeof(Spurit.globalSnippet) === 'undefined'){
+            Spurit.globalSnippet = {
+                shop_currency: '{{ shop.currency }}',
+                money_format: '{{ shop.money_format }}',
+                cart: {{ cart | json }},
+                customer_id: '{{ customer.id }}'
+            };
+        }
+
+        {% for line_item in cart.items %}
+            {% render 'spurit_po2_product_details_snippet', product: line_item.product %}
+        {% endfor %}
+
+        {% assign pageType = template | split: '.' | first %}
+
+        {% if pageType == 'product' %}
+            {% render 'spurit_po2_product_details_snippet', product: product %}
+        {% elsif pageType == 'search' %}
+            {% render 'spurit_po2_products_list_snippet', products: search.results %}
+        {% elsif pageType == 'collection' %}
+            {% paginate collection.products %}
+                {% for product in collection.products %}
+                    {% render 'spurit_po2_product_details_snippet', product: product %}
+                {% endfor %}
+            {% endpaginate %}
+        {% endif %}
+    }
+</script>
+
+<script>
+  (function() {
+    setTimeout(() => document.querySelector('body').classList.add('spo-loaded'), 5000)
+  })();
+</script>
+
+    <script>
+        if(!window.PomFirstLoad){
+            window.PomFirstLoad = true;
+            let script = document.createElement("script");  // create a script DOM node
+            script.src = "https://amaicdn.com/preorder2/common.js";  // set its src to the provided URL
+            document.head.appendChild(script);
+        }
+    </script>
+
+

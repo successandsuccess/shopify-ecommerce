@@ -1,0 +1,14 @@
+{% comment %}
+  Renders an image tag using Shopify's image_tag filter
+
+  Accepts:
+  - image: {Object} Image Object
+  - image_width: {String} Size of the product image card. Values are pixels
+  - image_class: {String} Class attribute of the returning image tag (optional)
+  - image_loading: {String} Loading attribute of the returning image tag (optional)
+  
+  Usage:
+  {% render 'card-product-image', image: card_product.featured_media, image_width: card_product.featured_media.width, image_class: 'motion-reduce large-up-hide', image_loading: 'loading="lazy"' %}
+{% endcomment %}
+
+{{ image | image_url: width: image_width | image_tag: class: image_class, loading: image_loading }}

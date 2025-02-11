@@ -1,0 +1,511 @@
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{%- capture availability_filter_load -%}
+  {%- render 'availability-filter-check' -%}
+{%- endcapture -%}
+
+{%- liquid
+  assign social_icons = true
+  if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+    assign social_icons = false
+  endif
+  if section.settings.enable_country_selector or section.settings.enable_language_selector
+    assign language_country_selector = true
+  endif
+  if section.blocks.size > 0
+    assign announcement_bar = true
+  endif
+
+  assign total_slides = 0
+  assign slides_to_show = ""
+
+  for block in section.blocks
+    assign s_date = block.settings.start_date | replace: "/", " " | date: "%Y-%m-%d %H:%M" | date: "%s"
+    assign e_date = block.settings.end_date | replace: "/", " " | date: "%Y-%m-%d %H:%M" | date: "%s"
+    assign t_date = "now" | date: "%Y-%m-%d %H:%M" | date: "%s"
+
+    assign timezone = section.settings.timezone
+
+    if timezone == 'est'
+      assign start_date = s_date | minus: 18000
+      assign end_date = e_date | minus: 18000
+      assign today_date = t_date | minus: 18000 
+    elsif timezone == 'edt'
+      assign start_date = s_date | minus: 14400
+      assign end_date = e_date | minus: 14400
+      assign today_date = t_date | minus: 14400
+
+    endif
+
+    assign show_announcement = false
+    if s_date == blank and e_date == blank
+      assign show_announcement = true
+    endif
+
+    if s_date != blank and e_date != blank
+      if start_date <= today_date and today_date < end_date
+        assign show_announcement = true
+      endif
+
+    elsif s_date != blank
+      if start_date <= today_date
+        assign show_announcement = true
+      endif
+
+    elsif e_date != blank
+      if today_date < end_date
+        assign show_announcement = true
+      endif
+    endif
+
+    if show_announcement
+      if slides_to_show != ""
+        assign slides_to_show = slides_to_show | append: ","
+      endif
+
+      assign slides_to_show = slides_to_show | append: forloop.index0
+      assign total_slides = total_slides | plus: 1
+    endif
+  endfor
+
+  assign slides_to_show = slides_to_show | split: ","
+-%}
+
+{% if social_icons %}
+  {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+
+{%- capture utility_bar_css -%}
+  color-{{ section.settings.color_scheme }}
+  {% if section.settings.enable_country_selector %}
+    enable-country-selector
+  {% else %}
+    disable-country-selector
+  {% endif %}
+    gradient
+  {% if section.settings.show_line_separator and section.blocks.size > 0 %}
+    utility-bar--bottom-border
+  {% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%}
+    utility-bar--bottom-border-social-only
+  {% endif %}
+  {% if section.settings.enable_country_selector or section.settings.enable_language_selector %}
+    header-localization
+  {% endif %}
+  {% if section.settings.enable_sticky_promo == true %}
+    sticky-promo-enabled
+  {% endif %}
+{%- endcapture %}
+
+<div class="utility-bar {{ utility_bar_css }}">
+  <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
+    {%- if section.settings.show_social and social_icons -%}
+      {%- render 'social-icons' -%}
+    {%- endif -%}
+    {%- if slides_to_show.size == 1 -%}
+      {% assign slide_to_show = slides_to_show[0] | plus: 0 %}
+      <div class="announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}" role="region" aria-label="{{ 'sections.header.announcement' | t }}">
+        {%- if section.blocks[slide_to_show].settings.text != blank -%}
+          {%- if section.blocks[slide_to_show].settings.link != blank -%}
+            {% assign link = section.blocks[slide_to_show].settings.link %}
+            <a
+              href="{% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}
+                {{ link.url }}{{ availability_filter_load }}
+              {% else %}
+                {{ link.url }}
+              {% endif %}
+            {% else %}{{ link.url }}{% endunless %}"
+              class="announcement-bar__link link link--text focus-inset animate-arrow"
+            >
+          {%- endif -%}
+          <p class="announcement-bar__message h5">
+            <span>{{ section.blocks[slide_to_show].settings.text | escape }}</span>
+            {%- if section.blocks[slide_to_show].settings.link != blank -%}
+              {% render 'icon-arrow' %}
+            {%- endif -%}
+          </p>
+          {%- if section.blocks[slide_to_show].settings.link != blank -%}
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    {%- elsif slides_to_show.size > 1 -%}
+      <slideshow-component
+        class="announcement-bar"
+        role="region"
+        aria-roledescription="{{ 'sections.announcements.carousel' | t }}"
+        aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
+      >
+        <div class="announcement-bar-slider slider-buttons">
+          <button
+            type="button"
+            class="slider-button slider-button--prev"
+            name="previous"
+            aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
+            aria-controls="Slider-{{ section.id }}"
+          >
+            {% render 'icon-caret' %}
+          </button>
+          <div
+            class="grid grid--1-col slider slider--everywhere"
+            id="Slider-{{ section.id }}"
+            aria-live="polite"
+            aria-atomic="true"
+            data-autoplay="{{ section.settings.auto_rotate }}"
+            data-speed="{{ section.settings.change_slides_speed }}"
+          >
+            {%- for block in section.blocks -%}
+              <div
+                class="slideshow__slide slider__slide grid__item grid--1-col"
+                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                {{ block.shopify_attributes }}
+                role="group"
+                aria-roledescription="{{ 'sections.announcements.announcement' | t }}"
+                aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                tabindex="-1"
+              >
+                <div
+                  class="announcement-bar__announcement"
+                  role="region"
+                  aria-label="{{ 'sections.header.announcement' | t }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- if block.settings.text != blank -%}
+                    {%- if block.settings.link != blank -%}
+                      {% assign link = block.settings.link %}
+                      <a
+                        href="{% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}{{ link.url }}{{ availability_filter_load }}{% else %}{{ link.url }}{% endif %}{% else %}{{ link.url }}{% endunless %}"
+                        class="announcement-bar__link link link--text focus-inset animate-arrow"
+                      >
+                    {%- endif -%}
+                    <p class="announcement-bar__message h5">
+                      <span>{{ block.settings.text | escape }}</span>
+                    </p>
+                    {%- if block.settings.link != blank -%}
+                      </a>
+                    {%- endif -%}
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+          <button
+            type="button"
+            class="slider-button slider-button--next"
+            name="next"
+            aria-label="{{ 'sections.announcements.next_announcement' | t }}"
+            aria-controls="Slider-{{ section.id }}"
+          >
+            {% render 'icon-caret' %}
+          </button>
+        </div>
+      </slideshow-component>
+      {%- if request.design_mode -%}
+        <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+  <div class="secondary-nav color-{{ section.settings.color_scheme_1 }} small-hide medium-hide">
+    <div class="page-width localization-wrapper">
+      {%- if section.settings.menu != blank -%}
+        <ul class="bar-menu-links list-menu list-menu--inline">
+        {%- for link in section.settings.menu.links -%}
+          <li>
+          {% capture int_links %}{% if link.url contains 'https://' or link.url contains 'http://' or link.url contains '#' %}{{link.url}}{% else %}{{ shop.url }}{{link.url}}{% endif %}{% endcapture %}
+          {%- if link.links != blank -%}
+              <details id="bar-menu-desktop" class="bar-menu-desktop hover-open">
+                <summary id="bar-menu-{{ link.handle }}" class="link link--text">
+                  <span>{{- link.title | escape -}}</span>
+                </summary>
+                <div class="inner-content" tabindex="-1" >
+                  <div class="bar-menu-content">
+                  {%- for childlink in link.links -%}
+                  {% capture child_links %}{% if childlink.url contains 'https://' or childlink.url contains 'http://' or childlink.url contains '#' %}{{childlink.url}}{% else %}{{ shop.url }}{{childlink.url}}{% endif %}{% endcapture %}
+                    <li>
+                      <a href="{{ child_links }}" {% if child_links contains shop.url or child_links contains '#' %}{% else %}target="_blank"{% endif %}class="link--level-2 link">
+                        {% assign child_title = childlink.title | handleize %}
+                        {% if child_title == 'faqs' %}
+                          <i class="box material-icons">question_answer</i>
+                        {% elsif child_title == 'terms-conditions' %}
+                          <i class="box material-icons">assignment</i>
+                        {% elsif child_title == 'returns-exchanges' %}
+                          <i class="box material-icons">swap_horiz</i>
+                        {% elsif child_title == 'privacy-policy' %}
+                          <i class="material-icons">remove_red_eye</i>
+                        {% elsif child_title == 'contact-us' %}
+                          <i class="box material-icons">call</i>
+                        {% else %}
+                          <span class="box"></span>
+                        {% endif %}
+                        {{ childlink.title | escape }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </div>
+                </div>
+              </details>
+            {% else %}
+              {%- assign market_link = int_links -%}
+              {% if int_links contains 'e-gift-cards' %}
+                {%- case cart.currency.iso_code -%}
+                  {% when 'GBP' %}
+                    {%- assign market_link = int_links | rstrip | append: '-uk' -%}
+                {%- endcase -%}
+              {% endif %}
+              <a href="{{ market_link }}" {% if int_links contains shop.url or int_links contains '#' %}{% else %}target="_blank"{% endif %} class="link link--text">{{ link.title }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+        <noscript class="small-hide medium-hide">
+          {%- form 'localization', id: 'AnnouncementCountryMobileFormNoScript', class: 'localization-form' -%}
+            <div class="localization-form__select">
+              <span class="visually-hidden" id="AnnouncementCountryMobileLabelNoScript">
+                {{ 'localization.country_label' | t }}
+              </span>
+              <select
+                class="localization-selector link"
+                name="country_code"
+                aria-labelledby="AnnouncementCountryMobileLabelNoScript"
+              >
+                {%- for country in localization.available_countries -%}
+                  <option
+                    value="{{ country.iso_code }}"
+                    {%- if country.iso_code == localization.country.iso_code %}
+                      selected
+                    {% endif %}
+                  >
+                    {{ country.name }} ({{ country.currency.iso_code }}
+                    {{ country.currency.symbol }})
+                  </option>
+                {%- endfor -%}
+              </select>
+              {% render 'icon-caret' %}
+            </div>
+            <button class="button button--tertiary">{{ 'localization.update_country' | t }}</button>
+          {%- endform -%}
+        </noscript>
+
+        <localization-form class="small-hide medium-hide no-js-hidden">
+          {%- form 'localization', id: 'AnnouncementCountryForm', class: 'localization-form' -%}
+            <div>
+              <span class="visually-hidden" id="AnnouncementCountryLabel">{{ 'localization.country_label' | t }}</span>
+              {%- render 'country-localization', localPosition: 'AnnouncementCountry', position: 'announcement-bar' -%}
+            </div>
+          {%- endform -%}
+        </localization-form>
+      {% endif %}
+
+      {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+        <noscript class="small-hide medium-hide">
+          {%- form 'localization', id: 'AnnouncementLanguageMobileFormNoScript', class: 'localization-form' -%}
+            <div class="localization-form__select">
+              <span class="visually-hidden" id="AnnouncementLanguageMobileLabelNoScript">
+                {{ 'localization.language_label' | t }}
+              </span>
+              <select
+                class="localization-selector link"
+                name="locale_code"
+                aria-labelledby="AnnouncementLanguageMobileLabelNoScript"
+              >
+                {%- for language in localization.available_languages -%}
+                  <option
+                    value="{{ language.iso_code }}"
+                    lang="{{ language.iso_code }}"
+                    {%- if language.iso_code == localization.language.iso_code %}
+                      selected
+                    {% endif %}
+                  >
+                    {{ language.endonym_name | capitalize }}
+                  </option>
+                {%- endfor -%}
+              </select>
+              {% render 'icon-caret' %}
+            </div>
+            <button class="button button--tertiary">{{ 'localization.update_language' | t }}</button>
+          {%- endform -%}
+        </noscript>
+
+        <localization-form class="small-hide medium-hide no-js-hidden">
+          {%- form 'localization', id: 'AnnouncementLanguageForm', class: 'localization-form' -%}
+            <div>
+              <span class="visually-hidden" id="AnnouncementLanguageLabel">{{ 'localization.language_label' | t }}</span>
+              {%- render 'language-localization', localPosition: 'AnnouncementLanguage' -%}
+            </div>
+          {%- endform -%}
+        </localization-form>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  {% if section.settings.social_color != blank %}
+    .utility-bar .list-social__item .icon path {
+      fill: {{ section.settings.social_color }};
+    }
+  {% endif %}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "max_blocks": 12,
+  "class": "announcement-bar-section",
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_promo",
+      "label": "t:sections.header.settings.enable_sticky_promo.label",
+      "info": "t:sections.header.settings.enable_sticky_promo.info",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "accent-2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "default": true,
+      "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__1.content",
+      "info": "t:sections.announcement-bar.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.show_social.label"
+    },
+    {
+      "type": "color",
+      "id": "social_color",
+      "label": "t:sections.announcement-bar.settings.social_color.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.announcement-bar.settings.auto_rotate.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
+      "default": 5
+    },
+    {
+      "type": "select",
+      "id": "timezone",
+      "label": "t:sections.announcement-bar.settings.promo_timezone.label",
+      "options": [
+        {
+          "value": "est",
+          "label": "t:sections.announcement-bar.settings.promo_timezone.options__1.label"
+        },
+        {
+          "value": "edt",
+          "label": "t:sections.announcement-bar.settings.promo_timezone.options__2.label"
+        }
+      ],
+      "default": "edt"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Secondary Bar"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme_1",
+      "label": "t:sections.all.colors.label",
+      "default": "background-2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__3.content",
+      "info": "t:sections.announcement-bar.settings.header__3.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_country_selector.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Welcome to our store",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.announcement-bar.blocks.announcement.settings.timer_header.content",
+          "info": "t:sections.announcement-bar.blocks.announcement.settings.timer_header.info"
+        },
+        {
+          "type": "text",
+          "id": "start_date",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.start_date.label",
+          "info": "t:sections.announcement-bar.blocks.announcement.settings.start_date.info",
+          "placeholder": "YYYY-MM-DD/HH:MM"
+        },
+        {
+          "type": "text",
+          "id": "end_date",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.end_date.label",
+          "info": "t:sections.announcement-bar.blocks.announcement.settings.end_date.info",
+          "placeholder": "YYYY-MM-DD/HH:MM"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.announcement-bar.presets.name",
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

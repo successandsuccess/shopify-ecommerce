@@ -1,0 +1,189 @@
+{
+  "sections": {
+    "breadcrumbs_Pz9cVE": {
+      "type": "breadcrumbs",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "blog_title": "Read our blog",
+        "blog_description": "<p>Dive into our latest stories for inspiration, tips, and trends.</p>",
+        "layout": "grid",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": false,
+        "show_author": false,
+        "padding_top": 28,
+        "padding_bottom": 36
+      }
+    },
+    "faq_section": {
+      "type": "faq-section",
+      "blocks": {
+        "collapsible_row_wEXgkC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is Business Attire A Suit?",
+            "row_content": "<p>When thinking about business attire for men, a question that is often asked is: Do I need to wear a suit? What really is the most appropriate business attire for men? Perhaps you were working remote the last few years or you are entering a new field of work. Business attire for men can vary depending on the type of professional setting and may not entail wearing a suit. Let’s take a look at the various types of professional dress types.</p>"
+          }
+        },
+        "collapsible_row_fa9qQ9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What Are The 4 Types Of Professional Dress?",
+            "row_content": "<p>To keep it simple, professional dress for men can be looked at in four different ways. The four types of professional dress include: Business formal Business professional Business casual (most popular) Casual. If you’re unsure about your workplace dress code, it never hurts to ask your hiring manager. Dress code should be disclosed upon hire. If it still seems unclear, ask around. See what others in your role are wearing. Unsure what to wear on day one? It may be safe to dress more business professional and assess on day one. Business casual is a growing style that allows you to look clean cut while wearing rather casual clothing. This style can include joggers, sporty jackets, untucked shirts, performance pants, and more. For example, you could wear performance pants with an unbuttoned and untucked shirt. Performance pants allow you to look professional while feeling comfortable, almost like you’re at home in your pajamas. Better yet, performance pants and shirts should not wrinkle like traditional dress pants and shirts.</p>"
+          }
+        },
+        "collapsible_row_GrVkqQ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What Is Business Attire Dress Code?",
+            "row_content": "<p>Business attire dress code can vary because really, it depends on your place of business. In general, business attire is whatever is deemed appropriate in your place of work. It may also depend on the nature of the day. For example, if you are meeting potential new clients you may choose to wear something more formal than your day to day attire. While you may wear nice pants and a collared shirt on a typical day, a day of interviews may entail dressing more formally. Since dress codes can vary it’s important to have a wardrobe that allows you to mix and match styles.</p>"
+          }
+        },
+        "collapsible_row_Yq4Ge3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What Is Business Attire For A Man?",
+            "row_content": "<p>Business attire for a man may depend on the nature of the work or event. Our clothing should be a way to express ourselves while maintaining a clean professional look. For some men, business attire looks like nice pants with a buttoned down shirt and tie. For some, it may look like pants with a blazer or sports jacket. In some work settings, business casual attire for a man may even be just a clean polo with pants. In today’s world we are seeing more casual business settings. Even top executives are strolling into work wearing athleisure clothing items such as performance pants and tennis shoes as opposed to slacks and dress shoes. The key is finding clothes that make you feel confident while projecting a professional, clean-cut vibe.</p><p></p>"
+          }
+        },
+        "collapsible_row_7FktPg": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What Is a Men's Professional Attire?",
+            "row_content": "<p>As we have mentioned, men's professional attire can vary by setting. The key things to remember about professional attire remain: keep it clean, keep it wrinkle free, and keep it comfortable. Looking professional shouldn’t come at the cost of discomfort. After all, you should be focused on the day and work ahead, not how uncomfortable your shirt is. Men’s professional attire may range from blazers and sportcoats to performance pants and untucked shirts.</p>"
+          }
+        },
+        "collapsible_row_dqM66U": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What Is Professional Casual For Men?",
+            "row_content": "<p>Professional business casual attire for men is trending. The days of restrictive slacks and stiff dress shoes are becoming a thing of the past. In replacement, we are seeing performance pants and tennis shoes on the rise. A professional casual style reflects that you’re professional, yet a real human too. Clients and colleagues will not look at you and think “they are underdressed” but rather “they look comfortable and professional.” We’ve all been approached by the salesman that makes us cringe because he’s overdressed and covered in cologne. It’s a turn off, really. Most of us would rather deal with someone we can relate to. What we wear can give off a first impression, so it’s important to make the right impact. So what’s acceptable for professional casual wear for men? Professional casual for men means a little more comfort while maintaining a professional look. Some may opt in for more comfortable fabrics and refrain from the button ups and ties. Some typical items men wear for professional casual include golf polos, collared shirts, untucked shirts, jeans, and sweaters.</p>"
+          }
+        },
+        "collapsible_row_4kx9cY": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What Is The Difference Between Business Attire And Business Casual?",
+            "row_content": "<p>The difference between business attire and business casual is exactly what you may think, it’s more comfortable and more casual. But it doesn’t look any less business-like. While business attire typically includes more formal clothing such as ties, jackets, and button up shirts, business casual is no less professional. It’s simply just a more relaxed business feel. Regardless of business formal or business casual, your clothing should be comfortable, clean pressed, and functional. Business casual attire for men may include some more comfortable fitting pants and a collared shirt with no tie.</p>"
+          }
+        },
+        "collapsible_row_mkQpLJ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What Is Traditional Business Attire?",
+            "row_content": "<p>Traditional business attire falls into the business formal and business professional categories mentioned. This may include formal suits, sports jackets, blazers, polos, leather shoes, etc. Traditional business attire may be looked at as the more formal of the professional dress types. While traditional business attire for men may be more formal, it should not mean less comfortable. Substitute your restrictive dress pants for performance pants. Throw on a non-iron shirt and blazer. To complete the look, try some freshwhite sneakers. It’s as simple as this to modernize traditional business attire.</p>"
+          }
+        },
+        "collapsible_row_nBkgqp": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What Should Men Wear In Office?",
+            "row_content": "<p>Ultimately, what to wear in an office should come down to dressing the part and being comfortable doing it. If no clear dress code is given, take a look around. What do others in your role seem to be wearing? And ask yourself, what will I be confident in? Wearing clothing you feel confident and comfortable in is a must regardless of business professional attire or business casual dress code. Whatever you choose to wear to the office, make it functional, versatile, and comfortable. For an entire collection of comfortable yet professional men’s business attire, visit Twillory. Twillory’s mission is to complete every man’s wardrobe with comfortable, convenient garments that are as easy on the wallet as they are to wear and care for. Our product line features performance trousers, athlounger joggers, non-iron button downs, untucked shirts, and sweat-wicking undershirts. Shop our four collections today: Performance, Untuck(able), Safecotton, and Athleisure. Business casual has evolved, staying up to date with the times shows clients and colleagues that you know what’s up. Searching for comfortable, affordable, and stylish business attire for men? Shop Twillory today!</p>"
+          }
+        },
+        "collapsible_row_txBVpw": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What brands should men wear?",
+            "row_content": "<p>With so many menswear brands out there to pick from, Twillory men’s apparel stands above the others because we raise the bar to maximize comfort, performance, and style. Twillory has a well-established reputation for creating versatile, quality menswear that you can trust to fit well and to make you look sharp. We are the best brand you can choose to ensure the clothing you wear is crafted for the best fit, form, and function. And our menswear is as easy on the wallet as it is to wear and care for. We don’t just keep pace with trends like some other brands, our clothing is timeless and will last for many years. Whether you're suiting up for work or keeping it casual, from performance suits to athleisure wear and everything in between, versatile Twillory has your back.</p>"
+          }
+        },
+        "collapsible_row_AjepaN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What's the best outfit for men?",
+            "row_content": "<p>The best outfit for you to wear is whatever you are comfortable wearing. We make everything from Performance suits, shirts, and pants to casualwear, from athleisure wear to underwear; Twillory is so versatile we’ve got you covered.</p>"
+          }
+        },
+        "collapsible_row_tbbCY4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is Twillory good quality?",
+            "row_content": "<p>The Twillory brand ensures that all of our men’s clothing is of superior quality. Whether you live untucked or buttoned up, your Twillory size will always run true. You can trust that every Twillory garment is made with better fabrics, providing a better fit, and offering you a better price than other brands. You don’t have to worry about wrinkling when you wear clothing made with our Performance fabrics. No dry cleaning or ironing is needed.</p>"
+          }
+        },
+        "collapsible_row_Eqy9tX": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Which clothing brand is best?",
+            "row_content": "<p>The best clothing brand in menswear should match your personal style, budget, and the specific clothing items you need for your wardrobe. The best brand is made with Performance fabrics, has an affordable price point, and fits perfectly. Twillory Performance clothing is hyper-breathable with moisture-wicking that will keep you cool and dry when the hustle brings the heat.</p>"
+          }
+        },
+        "collapsible_row_bAFpyF": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is good for men to wear everyday?",
+            "row_content": "<p>Twillory Performance clothing can be worn daily providing you with exceptional comfort. Our clothing pieces can be worn any day of the week and will quickly become your favorites. The more you buy, the more you save. Our clothing is an investment to keep you looking and feeling your very best.</p>"
+          }
+        },
+        "collapsible_row_8di8Wn": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What should a 40 year old man wear?",
+            "row_content": "<p>40 year old men have a lot of freedom in how they choose to dress including Twillory’s classic, well-fitted dress shirts in neutral colors like white, light blue, or subtle patterns that can be dressed up for work or dressed down for a casual look. We also offer button-downs and polo shirts, perfect for relaxed, casual events in timeless colors. Our chinos are comfortable and well-constructed and come in versatile colors like navy, khaki, or charcoal gray. Classic, well-fitting, Twillory dark-wash jeans can be dressed up with a blazer or dressed down with a casual shirt. Our outerwear options include well-tailored jackets or coats that will add style and functionality to your wardrobe. We also offer different fit options, so choose the one that suits your body type best.</p>"
+          }
+        },
+        "collapsible_row_cppiAT": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How should a 60 year old man dress casual?",
+            "row_content": "<p>A 60-year-old man should dress casually focusing on comfort, style, and age-appropriateness. Choose well-made clothing in quality fabrics that fit properly, including dark-wash jeans or chinos. Collared shirts like button-downs or polo shirts work well, along with simple T-shirts. Consider adding a classic jacket or blazer. Stick to muted colors and avoid overly trendy pieces. Emphasize grooming and wear what makes you feel confident and comfortable in your own skin.</p>"
+          }
+        },
+        "collapsible_row_TR8tFM": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are guys who dress well attractive?",
+            "row_content": "<p>Being attractive isn’t just about your clothes; it's about how you carry yourself. Confidence is one of the most attractive qualities a man can have. When you feel good wearing Twillory clothing, it builds up your confidence and you’re ready for the hustle or a special date.</p>"
+          }
+        },
+        "collapsible_row_K3d9Uz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What can a guy wear to be more attractive?",
+            "row_content": "<p>Regardless of the brand, well-fitted clothing is universally attractive. Whether it's Twillory shirts, suits, or trousers, our clothing is tailored to your body to create a sharp, put-together look. Twillory offers a variety of classic menswear pieces that can form the foundation of your wardrobe. Investing in Twillory clothing made from high-quality Performance fabric elevates your look and makes your clothing last longer. We offer a variety of colors to complement your skin tone so you can select the shades that work best for you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_wEXgkC",
+        "collapsible_row_fa9qQ9",
+        "collapsible_row_GrVkqQ",
+        "collapsible_row_Yq4Ge3",
+        "collapsible_row_7FktPg",
+        "collapsible_row_dqM66U",
+        "collapsible_row_4kx9cY",
+        "collapsible_row_mkQpLJ",
+        "collapsible_row_nBkgqp",
+        "collapsible_row_txBVpw",
+        "collapsible_row_AjepaN",
+        "collapsible_row_tbbCY4",
+        "collapsible_row_Eqy9tX",
+        "collapsible_row_bAFpyF",
+        "collapsible_row_8di8Wn",
+        "collapsible_row_cppiAT",
+        "collapsible_row_TR8tFM",
+        "collapsible_row_K3d9Uz"
+      ],
+      "settings": {
+        "heading": "Because You Asked...",
+        "heading_size": "h2",
+        "section_content": "<p>What we wear should give us confidence to tackle whatever the day holds. If you’re wondering what’s appropriate to wear in a professional setting, you’re not alone. Think about it, from the moment we interview to the moment we walk in the first day, what we wear has the ability to set a first impression. Don’t let the fear of being over or under dressed come in the way of showing who you are. Read more to learn about the various types of professional attire for men.</p>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 116,
+        "padding_top_mob": 0,
+        "padding_bottom_mob": 91
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_Pz9cVE",
+    "main",
+    "faq_section"
+  ]
+}

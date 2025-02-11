@@ -1,0 +1,319 @@
+{% comment %}
+  Renders a header drawer menu for mobile and desktop.
+
+  Usage:
+  {% render 'header-drawer' %}
+{% endcomment %}
+
+{{ 'header-drawer.custom.css' | asset_url | stylesheet_tag }}
+
+{% assign mobile_menu = '' %}
+
+{% for block in section.blocks %}
+  {% if block.type == 'mobile_menu' %}
+    {% assign mobile_menu = block.settings.mobile_menu %}
+  {% endif %}
+{% endfor %}
+
+{% if mobile_menu == '' %}
+  {% assign mobile_menu = section.settings.menu %}
+{% endif %}
+
+{%- capture availability_filter_load -%}
+  {%- render 'availability-filter-check' -%}
+{%- endcapture -%}
+
+<header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
+  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+    <summary
+      class="header__icon header__icon--menu header__icon--summary link focus-inset"
+      aria-label="{{ 'sections.header.menu' | t }}"
+    >
+      <span>
+        {% render 'icon-hamburger' %}
+        {% render 'drawer-close-icon' %}
+      </span>
+    </summary>
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+      <div class="menu-drawer__left-bar">
+        <ul class="menu-drawer__left-bar__top-links">
+          <li>
+            <a class="menu-drawer__left-bar__top-links__account-icon" href="{{ routes.account_addresses_url }}">
+              {%- render 'icon-account' -%}
+            </a>
+          </li>
+          <li>
+            <a
+              class="menu-drawer__left-bar__top-links__info-icon"
+              href="https://twillory-help-center.gorgias.help/en-US"
+            >
+              {%- render 'icon-info' -%}
+            </a>
+          </li>
+        </ul>
+        <ul class="menu-drawer__left-bar__social-links">
+          <li>
+            <a href="{{ settings.social_instagram_link }}">{% render 'icon-instagram' %}</a>
+          </li>
+          <li>
+            <a href="{{ settings.social_facebook_link }}">{% render 'icon-facebook' %}</a>
+          </li>
+          <li>
+            <a href="{{ settings.social_twitter_link }}">{% render 'icon-twitter' %}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-drawer__inner-container">
+        <div class="menu-drawer__navigation-container">
+          <nav class="menu-drawer__navigation">
+            <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+              {%- for link in mobile_menu.links -%}
+                {% assign link_title = link.title | handleize %}
+                {% capture int_links %}
+                  {% if link.url contains 'https://' or link.url contains 'http://' or link.url contains '#' %}
+                    {% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}{{ link.url }}{{ availability_filter_load }}{% else %}{{ link.url }}{% endif %}{% else %}{{ link.url }}{% endunless %}
+                  {% else %}
+                    {% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}{{ shop.url }}{{ link.url }}{{ availability_filter_load }}{% else %}{{ shop.url }}{{ link.url }}{% endif %}{% else %}{{ shop.url }}{{ link.url }}{% endunless %}
+                  {% endif %}
+                {% endcapture %}
+                <li>
+                  {%- if link.links != blank -%}
+                    <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
+                      <summary
+                        id="HeaderDrawer-{{ link.handle }}"
+                        class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}{% if link_title contains 'sale' or link_title contains 'deal' %} sale-text{% endif %}"
+                      >
+                        {{ link.title }}
+                        {% render 'icon-caret' %}
+                      </summary>
+                      <div
+                        id="link-{{ link.handle | escape }}"
+                        class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                        tabindex="-1"
+                      >
+                        <div class="menu-drawer__inner-submenu menu-level-2">
+                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                            {% render 'icon-arrow' %}
+                            {{ link.title }}
+                          </button>
+                          <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            {%- for childlink in link.links -%}
+                              {% capture child_links %}
+                                {% if childlink.url contains 'https://' or childlink.url contains 'http://' or childlink.url contains '#' %}
+                                {% unless childlink.url contains 'products' and childlink.url contains 'collection' %}{% if childlink.url == 'collection_link' or childlink.url contains 'collections' %}{{ childlink.url }}{{ availability_filter_load }}{% else %}{{ childlink.url }}{% endif %}{% else %}{{ childlink.url }}{% endunless %}
+                                {% else %}
+                                  {% unless childlink.url contains 'products' and childlink.url contains 'collection' %}{% if childlink.url == 'collection_link' or childlink.url contains 'collections' %}{{ shop.url }}{{ childlink.url }}{{ availability_filter_load }}{% else %}{{ shop.url }}{{ childlink.url }}{% endif %}{% else %}{{ shop.url }}{{ childlink.url }}{% endunless %}
+                                {% endif %}
+                              {% endcapture %}
+                              <li>
+                                {%- if childlink.links == blank -%}
+                                  <a
+                                    id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                    href="{{ child_links }}"
+                                    {% if child_links contains shop.url or child_links contains '#' %}{% else %}target="_blank"{% endif %}
+                                    class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                    {% if childlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                  >
+                                    {{ childlink.title }}
+                                  </a>
+                                {%- else -%}
+                                  <div id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}"{% if forloop.last %} class="last-link"{% endif %}>
+                                    <div
+                                      id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                      class="menu-drawer__menu-item link link--text list-menu__item focus-inset third-child-link"
+                                    >
+                                      {{ childlink.title }}
+                                      {% render 'icon-caret' %}
+                                    </div>
+                                    <div
+                                      id="childlink-{{ childlink.handle | escape }}"
+                                      class="has-submenu gradient motion-reduce menu-level-3 drawer-panel"
+                                    >
+                                      
+                                      <ul
+                                        class="menu-drawer__menu list-menu"
+                                        role="list"
+                                        tabindex="-1"
+                                      >
+                                        {%- for grandchildlink in childlink.links -%}
+                                          {% capture grandchild_links %}
+                                            {% if grandchildlink.url contains 'https://' or grandchildlink.url contains 'http://' or grandchildlink.url contains '#' %}
+                                              {% unless grandchildlink.url contains 'products' and grandchildlink.url contains 'collection' %}{% if grandchildlink.url == 'collection_link' or grandchildlink.url contains 'collections' %}{{ grandchildlink.url }}{{ availability_filter_load }}{% else %}{{ grandchildlink.url }}{% endif %}{% else %}{{ grandchildlink.url }}{% endunless %}
+                                            {% else %}
+                                              {% unless grandchildlink.url contains 'products' and grandchildlink.url contains 'collection' %}{% if grandchildlink.url == 'collection_link' or grandchildlink.url contains 'collections' %}{{ shop.url }}{{ grandchildlink.url }}{{ availability_filter_load }}{% else %}{{ shop.url }}{{ grandchildlink.url }}{% endif %}{% else %}{{ shop.url }}{{ grandchildlink.url }}{% endunless %}
+                                            {% endif %}
+                                          {% endcapture %}
+                                          <li>
+                                            <a
+                                              id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                              href="{{ grandchild_links }}"
+                                              {% if grandchild_links contains shop.url or grandchild_links contains '#' %}{% else %}target="_blank"{% endif %}
+                                              class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                              {% if grandchildlink.current %}
+                                                aria-current="page"
+                                              {% endif %}
+                                            >
+                                              {{ grandchildlink.title }}
+                                            </a>
+                                          </li>
+                                        {%- endfor -%}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                {%- endif -%}
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      </div>
+                    </details>
+                  {%- else -%}
+                  {%- liquid
+                    assign block_value = false
+                    assign block_type = ''
+                    for block in section.blocks
+                      assign image_blocks = block.settings.heading | handleize
+                      if link_title == image_blocks
+                        assign block_value = true
+                        assign block_type = block.type
+                        assign current_block = block  
+                        break; 
+                      endif
+                    endfor
+                  -%}
+                  {% if link.links == blank and block_value == true %}
+                    {%- if block_type == 'collection_images' or block_type == 'collection_cards' -%}
+                      <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
+                        <summary
+                          id="HeaderDrawer-{{ link.handle }}"
+                          class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}{% if link_title contains 'sale'  or link_title contains 'deal' %} sale-text{% endif %}"
+                        >
+                          {{ link.title }}
+                          {% render 'icon-caret' %}
+                        </summary>
+                        <div
+                          id="link-{{ link.handle | escape }}"
+                          class="menu-drawer__submenu has-submenu gradient motion-reduce block-menu {{ block_type }}"
+                          tabindex="-1"
+                        >
+                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                            {% render 'icon-arrow' %}
+                            {{ link.title }}
+                          </button>
+                          <ul class="menu-drawer__menu list-menu page-width" role="list">
+                            {% case block_type %}
+                              {% when 'collection_images' %}
+                                {%- for i in (1..4) -%}
+
+                                  {%- liquid 
+                                    assign collection_card = 'collection_' | append: i 
+                                    assign collection_text = 'collection_text_' | append: i 
+                                    assign collection_custom_title = 'collection_title_' | append: i 
+                                    assign collection__image = 'collection__image_' | append: i 
+                                    assign card_image = current_block.settings[collection_card] 
+                                  -%}
+
+                                  {% if card_image != blank %}
+                                    <li class="grid-item">
+                                      {% assign link = card_image.url %}
+                                      <a href="{% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}{{ link.url }}{{ availability_filter_load }}{% else %}{{ link.url }}{% endif %}{% else %}{{ link.url }}{% endunless %}" class="menu-collection-card">
+                                        {%- if current_block.settings[collection__image] != blank -%}
+                                          <img src="{{ current_block.settings[collection__image] | image_url: width: 292, height: 364 }}" width="292" height="364" loading='lazy' alt="{{ current_block.settings[collection__image].alt }}"/>
+                                        {% else  %}
+                                          <img
+                                            src="{{ card_image.featured_image | image_url: width: 292, height: 364 }}"
+                                            alt="{{ card_image.featured_image.alt }}"
+                                            height="292"
+                                            width="364"
+                                            loading="lazy"
+                                          >
+                                        {%- endif -%}
+                                        <div class="h3 collection-title">{% if current_block.settings[collection_custom_title] != blank %}{{ current_block.settings[collection_custom_title] }}{% else %}{{ card_image.title }}{% endif %}</div>
+                                        {% if current_block.settings[collection_text] != blank %}
+                                        <p class="collection-desc">{{ current_block.settings[collection_text] }}</p>
+                                        {% endif %}
+                                      </a>
+                                    </li>
+                                  {% endif %}
+                                {% endfor %}
+                                {% when 'collection_cards' %}
+                                  {%- for i in (1..4) -%}
+
+                                  {%- liquid
+                                    assign collections_card = 'collection_card_' | append: i 
+                                    assign card_custom_title = 'card_title_' | append: i
+                                    assign collections_text = 'card_text_' | append: i 
+                                    assign collections__image = 'card_image_' | append: i
+                                    assign col_card_image = current_block.settings[collections_card]
+                                  -%}
+
+                                  {% if col_card_image != blank %}
+                                    <li class="grid-item">
+                                      {% assign link = col_card_image.url %}
+                                      <a href="{% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}{{ link.url }}{{ availability_filter_load }}{% else %}{{ link.url }}{% endif %}{% else %}{{ link.url }}{% endunless %}" class="menu-collection-card">
+                                        {%- if current_block.settings[collections__image] != blank -%}
+                                          <img src="{{ current_block.settings[collections__image] | image_url: width: 292, height: 364 }}" width="292" height="364" loading='lazy' alt="{{ current_block.settings[collections__image].alt }}"/>
+                                        {% else  %}
+                                          <img
+                                            src="{{ col_card_image.featured_image | image_url: width: 292, height: 364 }}"
+                                            alt="{{ col_card_image.featured_image.alt }}"
+                                            height="292"
+                                            width="364"
+                                            loading="lazy"
+                                          >
+                                        {%- endif -%}
+                                        <div class="h3 collection-title">{% if current_block.settings[card_custom_title] != blank %}{{ current_block.settings[card_custom_title] }}{% else %}{{ col_card_image.title }}{% endif %}</div>
+                                        {% if current_block.settings[collections_text] != blank %}
+                                        <p class="collection-desc">{{ current_block.settings[collections_text] }}</p>
+                                        {% endif %}
+                                        </a>
+                                    </li>
+                                  {% endif %}
+                                {% endfor %}
+                              {% endcase %}
+                          </ul>
+                        </div>
+                      </details>
+                    {% endif %}
+                  {% else %}
+                    <a
+                      id="HeaderDrawer-{{ link.handle }}"
+                      href="{{ int_links }}"
+                      {% if int_links contains shop.url or int_links contains '#' %}{% else %}target="_blank"{% endif %}
+                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}{% if link_title contains 'sale' or link_title contains 'deal' %} sale-text{% endif %}"
+                      {% if link.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{ link.title }}
+                    </a> 
+                  {% endif %}
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </nav>
+        </div>
+        {% render 'mobile-drawer-featured-collection', section: section %}
+      </div>
+    </div>
+  </details>
+</header-drawer>
+
+<script>
+  var drawer_accordion = document.querySelectorAll("#menu-drawer .third-child-link");
+  for (var i = 0; i < drawer_accordion.length; i++) {
+    drawer_accordion[i].addEventListener("click", function(e) {
+      e.preventDefault();
+      this.classList.toggle("accordion-active");
+      var drawer_panel = this.nextElementSibling;
+      if (drawer_panel.style.maxHeight) {
+        drawer_panel.style.maxHeight = null;
+      } else {
+        drawer_panel.style.maxHeight = drawer_panel.scrollHeight + "px";
+      }
+    });
+  }
+</script>

@@ -1,0 +1,18 @@
+<div class="page-width breadcrumbs-bar{% if template.name == 'product' %} product-breadcrumbs quick-add-hidden{% endif %}">
+    {% render 'breadcrumbs' %}
+    </div>
+    
+    {% schema %}
+{
+  "name": "t:sections.breadcrumbs.name",
+  "class": "section-breadcrumbs",
+  "settings": [
+
+  ],
+  "presets": [
+    {
+      "name": "t:sections.breadcrumbs.presets.name"
+    }
+  ]
+}
+{% endschema %}

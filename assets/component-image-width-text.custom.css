@@ -1,0 +1,17 @@
+.image-with-text__heading p span.trademark {
+    font-size: 18px;
+    font-family: "Swiss 721", sans-serif;
+    transform: translateY(-30%);
+    display: inline-flex;
+}
+@media screen and (max-width: 992px) {
+    #ImageWithText .image-with-text__grid-mobile--reverse {
+        flex-direction: column-reverse;
+    }
+    #ImageWithText .image-with-text__grid-mobile--reverse .image-with-text__text-item {
+        padding-bottom: 40px;
+    }
+    #ImageWithText .image-with-text__grid-mobile--reverse .image-with-text__heading {
+        padding-top: 0;
+    }
+}

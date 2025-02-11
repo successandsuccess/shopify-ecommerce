@@ -1,0 +1,49 @@
+{%- capture availability_filter_load -%}
+  {%- render 'availability-filter-check' -%}
+{%- endcapture -%}
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'heading' %}
+      <h2 {{ block.shopify_attributes }} class="hero-banner__heading hero-banner__heading--{{ block.settings.heading_size }}">{{ block.settings.heading | replace: '™', '<span class="trademark">™</span>' }}</h2>
+    {% when 'text' %}
+      <div class="hero-banner__text-container" {{ block.shopify_attributes }}>
+        {% assign text_class = "<p class='hero-banner__text hero-banner__text--" | append: block.settings.text_style | append: "'" %}
+        {{ block.settings.text | replace: "<p", text_class }}
+      </div>
+    {% when 'button' %}
+      {% if block.settings.button_label != blank %}
+        <div>
+          <a
+            {% if block.settings.button_link == blank %}
+            role="link"
+            aria-disabled="true"
+            {% else %}
+            {% assign link = block.settings.button_link %}
+            href="{% unless link contains 'products' and link contains 'collection' %}{% if link.type == 'collection_link' or link contains 'collections' %}{{ link }}{{ availability_filter_load }}{% else %}{{ link }}{% endif %}{% else %}{{ link }}{% endunless %}"
+            {% endif %}
+            class="hero-banner__button button{% if block.settings.button_outline %} button--secondary{% else %} button--primary{% endif %}"
+            {{ block.shopify_attributes }}>
+            {{ block.settings.button_label | escape }}
+          </a>
+        </div>
+      {% endif %}
+    {% when 'rating' %}
+      <div {{ block.shopify_attributes }} class="hero-banner__rating">
+        <div class="hero-banner__rating-image">
+          {{ block.settings.image | image_url: width: 180 | image_tag }}
+        </div>
+        <div class="hero-banner__rating-content">
+          <p>
+            {{ block.settings.rating_text }}
+          </p>
+        </div>
+      </div>
+    {%- when 'caption' -%}
+      {% assign text_style_class = "hero-banner__text--" | append: block.settings.text_style %}
+      {% assign text_size_class = "hero-banner__text--" | append: block.settings.text_size %}
+      <p class="hero-banner__caption {{ text_style_class }} {{ text_size_class }}">
+        {{ block.settings.text }}
+      </p>
+  {% endcase %}
+{% endfor %}

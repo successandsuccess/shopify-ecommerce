@@ -1,0 +1,49 @@
+{
+  "sections": {
+    "2beee938-5f12-4e33-8dc7-793e601b605c": {
+      "type": "image-banner",
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/download.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "custom_class": "",
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "background_color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "9bcc21a9-47a6-4ee8-9852-797a31f867f3": {
+      "type": "custom-liquid",
+      "settings": {
+        "enable_desktop": true,
+        "enable_mobile": true,
+        "custom_liquid": "<div class=\"page-width\">\n<div style=\"text-align: center;\">\n<h1 data-sanitized-roboto=\"\" style=\"color: rgba(35, 68, 150, 1); font-weight: 900;font-size:51px;margin-bottom: 0;\">Welcome</h1>\n<h2 style=\"color: rgba(35, 68, 150, 1); font-weight: normal;font-size: 32px;margin-top: 0;padding-top: 0;\"><em>to the Twillory VIP Text Club!</em></h2>\n<p>Drop us your digits below to subscribe to the best kept secret on the internet.</p>\n<div id=\"ps__subscribe-form\" style=\"max-width: 400px; margin: auto; padding: 20px;\"><form data-sanitized-onsubmit=\"document.getElementById('ps__sent-message').style.display = 'block'; document.getElementById('ps__subscribe-form').style.display = 'none';\" data-sanitized-target=\"dummyframe\" action=\"https://api.postscript.io/subscribe/form\" method=\"post\">\n<input id=\"ps__shop_id\" name=\"shop_id\" type=\"hidden\" value=\"4418\"> <input id=\"ps__keyword_id\" name=\"keyword_id\" type=\"hidden\" value=\"251979\">\n<div style=\"margin-bottom: 10px;\"><input data-sanitized-autofocus=\"\" id=\"ps__phone-subscribe\" name=\"phone\" placeholder=\"Phone Number\" style=\"width: 100%; padding: 0.75em; font-size: 1.5em;\" type=\"phone\"></div>\n<div style=\"max-width: 100%; font-size: 10px; margin-bottom: 25px; margin-top: 15px; text-align: center; line-height: 1.2;\">*By subscribing, you agree to receive recurring automated marketing text messages (e.g. cart reminders) at the phone number provided. Consent is not a condition to purchase. Msg &amp; data rates may apply. Msg frequency varies. Reply HELP for help and STOP to cancel. View our <a href=\"{{ shop.terms_of_service.url }}\">Terms of Service</a> and <a href=\"{{ shop.privacy_policy.url }}\">Privacy Policy</a>.</div>\n<div><input class=\"btn\" style=\"width: 100%; padding: 0.75em; font-size: 1.5em;\" type=\"submit\" value=\"Subscribe\"></div>\n</form></div>\n<div id=\"ps__sent-message\" style=\"max-width: 400px; margin: auto; padding: 20px; display: none;\">\n<h4>Thanks for subscribing! We'll send you a message shortly.</h4>\n</div>\n</div>\n</div>\n<iframe border=\"0\" height=\"0\" id=\"ps__dummyframe\" name=\"dummyframe\" width=\"0\"></iframe>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 52
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "2beee938-5f12-4e33-8dc7-793e601b605c",
+    "9bcc21a9-47a6-4ee8-9852-797a31f867f3",
+    "main"
+  ]
+}

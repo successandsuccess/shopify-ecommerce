@@ -1,0 +1,65 @@
+{%- capture availability_filter_load -%}
+    {%- render 'availability-filter-check' -%}
+{%- endcapture -%}
+
+{% unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' %}
+    <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">  
+        <ul class="breadcrumbs-list list-unstyled list-menu--inline"> 
+            <li>
+                <a href="/">Home</a>   
+                <span aria-hidden="true" class="next-arrow">{% render 'nav-icon-caret' %}</span>
+            </li> 
+            {% if template contains 'page' %}   
+                <li>
+                    <span>{{ page.title }}</span> 
+                </li>
+            {% elsif template contains 'product' %}   
+                {% if collection.url %}  
+                    <li>  
+                        {% if availability_filter_load %}
+                            {% assign collection_url = collection.url | append: availability_filter_load %}
+                            {{ collection.title | link_to: collection_url }}
+                        {% else %}
+                            {{ collection.title | link_to: collection.url }}
+                        {% endif %}
+                        <span aria-hidden="true" class="next-arrow">{% render 'nav-icon-caret' %}</span>  
+                    </li> 
+                {% endif %}   
+                <li>    
+                    <span>{{ product.title }}</span> 
+                </li>
+            {% elsif template contains 'collection' and collection.handle %}   
+                <li>
+                    {% if current_tags %}
+                        {% capture url %}/collections/{{ collection.handle }}{% endcapture %}   
+                        {{ collection.title | link_to: url }} 
+                        <span>{{ current_tags | join: " + " }}</span>
+                    {% else %}  
+                        <span>{{ collection.title }}</span>   
+                    {% endif %}
+                </li>
+            {% elsif template contains 'blog' %}  
+                <li>
+                    {% if current_tags %} 
+                        {{ blog.title | link_to: blog.url }}
+                        <span>{{ current_tags | join: " + " }}</span> 
+                    {% else %}
+                        <span>{{ blog.title }}</span>
+                    {% endif %}
+                </li>
+            {% elsif template == 'article' %}
+                <li>
+                    {{ blog.title | link_to: blog.url }}
+                    <span aria-hidden="true" class="next-arrow">{% render 'nav-icon-caret' %}</span>
+                </li>
+                <li>
+                    <span>{{ article.title }}</span>
+                </li>
+            {% else %}
+                <li>
+                    <span>{{ page_title }}</span>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endunless %} 

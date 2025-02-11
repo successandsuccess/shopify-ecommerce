@@ -1,0 +1,24 @@
+{
+  "parent": "header-group.json",
+  "context": {
+    "market": "united-kingdom"
+  },
+  "sections": {
+    "announcement-bar": {
+      "settings": {
+      },
+      "blocks": {
+        "announcement-bar-0": {
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "announcement_HB98Tp": {
+          "disabled": true,
+          "settings": {
+          }
+        }
+      }
+    }
+  }
+}

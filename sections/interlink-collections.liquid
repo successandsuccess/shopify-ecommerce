@@ -1,0 +1,188 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mob }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mob }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.section_content != blank -%}
+    <div class="color-{{ section.settings.color_scheme }} gradient">
+        <div class="collection-content">
+            <div class="collection-content__wrapper section-{{ section.id }}-padding">
+                <div class="page-width">
+                    <div class="collection-content__section">
+                        {%- if section.settings.heading != blank -%}
+                            <span class="collection-content__heading inline-richtext {{ section.settings.heading_size }} center">
+                                {{ section.settings.heading }}
+                            </span>
+                        {% endif %}
+                        <div class="collection-content__content rte">
+                            {{ section.settings.section_content }}
+                        </div>
+                    </div>      
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <script>
+    $("#shopify-section-{{ section.id }} .collection-content__content").not('.slick-initialized').slick({
+      slidesToShow: {{ section.settings.columns_desktop }},
+      slidesToScroll: 1,
+      infinite:false,
+      arrows: true,
+      prevArrow: '<button class="slide-arrow prev-arrow"><svg xmlns="http://www.w3.org/2000/svg" class="icon-slide" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M9.87305 4.00586L6.25949 7.61941L9.87305 11.233" stroke="#2B4592" stroke-width="1.40722" stroke-linejoin="round"/></svg></button>',
+      nextArrow: '<button class="slide-arrow next-arrow"><svg xmlns="http://www.w3.org/2000/svg" class="icon-slide" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M9.87305 4.00586L6.25949 7.61941L9.87305 11.233" stroke="#2B4592" stroke-width="1.40722" stroke-linejoin="round"/></svg></button>',
+      responsive: [
+        {
+          breakpoint: 990,
+          settings: {
+            slidesToShow: {{ section.settings.columns_mobile }},
+            arrows: {{ section.settings.hide_arrows_mobile }},
+            adaptiveHeight: true
+          }
+        }
+      ]
+    });
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:sections.interlink_collections.name",
+  "tag": "section",
+  "class": "section interlink-collections",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:sections.collapsible_content.settings.heading.label",
+      "default": "Related Collections"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "liquid",
+      "id": "section_content",
+      "label": "t:sections.faq_section.settings.section_content.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.interlink_collections.settings.columns_desktop.label"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "1",
+      "label": "t:sections.interlink_collections.settings.columns_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.interlink_collections.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.interlink_collections.settings.columns_mobile.options__2.label"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_arrows_mobile",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.hide_arrows_mobile.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top_mob",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom_mob",
+      "default": 45
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.interlink_collections.presets.name"
+    }
+  ]
+}
+{% endschema %}

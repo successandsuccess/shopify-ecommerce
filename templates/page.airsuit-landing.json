@@ -1,0 +1,891 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "disable_heading_tag": true,
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_9DLy8N": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_r4PQLC": {
+          "type": "caption",
+          "settings": {
+            "caption": "SELLING OUT FAST",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large"
+          }
+        },
+        "heading_tzYrWi": {
+          "type": "heading",
+          "settings": {
+            "heading": "Pre-Order and Save on the Air Suit",
+            "heading_size": "h1"
+          }
+        },
+        "text_Yj9jWy": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>We can't keep this suit in stock. Order NOW to save and guarantee delivery by August.</h4><h4>↓</h4>"
+          }
+        },
+        "button_H9dg6K": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_r4PQLC",
+        "heading_tzYrWi",
+        "text_Yj9jWy",
+        "button_H9dg6K"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 76,
+        "padding_bottom": 76
+      }
+    },
+    "video_gPifRe": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": true,
+        "video": "shopify://files/videos/AirSuit-Hero.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "bd13231b-ed06-400e-bde1-92098aded2d7": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-3": {
+          "type": "column",
+          "settings": {
+            "hide_from_countries": false,
+            "title": "<strong>Save On Air</strong>",
+            "disable_heading_tag": true,
+            "text": "<p>up $20 off select Air</p>",
+            "link_label": "",
+            "link": "",
+            "enable_image_link": false,
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "column_6k9PWR": {
+          "type": "column",
+          "settings": {
+            "hide_from_countries": false,
+            "title": "PreOrder",
+            "disable_heading_tag": true,
+            "text": "<p>Delivery by August</p>",
+            "link_label": "",
+            "link": "",
+            "enable_image_link": false,
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-1": {
+          "type": "column",
+          "settings": {
+            "hide_from_countries": false,
+            "title": "<strong>Free Shipping</strong>",
+            "disable_heading_tag": true,
+            "text": "<p>Orders $99+</p>",
+            "link_label": "",
+            "link": "",
+            "enable_image_link": false,
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-2": {
+          "type": "column",
+          "settings": {
+            "hide_from_countries": false,
+            "title": "<strong>Free Returns</strong>",
+            "disable_heading_tag": true,
+            "text": "<p>All orders</p>",
+            "link_label": "",
+            "link": "",
+            "enable_image_link": false,
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-3",
+        "column_6k9PWR",
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-1",
+        "template--16285548839099__bd13231b-ed06-400e-bde1-92098aded2d7-column-2"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "show_overlay": false,
+        "custom_class": "",
+        "desktop_content_position": "middle-center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "remove_padding_horizontal": false,
+        "color_scheme": "accent-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 26,
+        "padding_bottom": 46,
+        "mobile_padding_top": 38,
+        "mobile_padding_bottom": 8
+      }
+    },
+    "0fe61544-3604-4cee-b4b2-41110ab73676": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_EPHDbB": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "SAVE ON PREORDER",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "rating_DaDCnN": {
+          "type": "rating",
+          "settings": {
+            "rating_image": "shopify://shop_images/Five_Stars.svg",
+            "rating_text": ""
+          }
+        },
+        "template--16285548839099__0fe61544-3604-4cee-b4b2-41110ab73676-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Pre-Order + Save On The Air Suit",
+            "heading_size": "h1",
+            "disable_heading_tag": true
+          }
+        },
+        "template--16285548839099__0fe61544-3604-4cee-b4b2-41110ab73676-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We can't keep this suit in stock. Order NOW to save and guarantee delivery by August.</p>",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "caption_EPHDbB",
+        "rating_DaDCnN",
+        "template--16285548839099__0fe61544-3604-4cee-b4b2-41110ab73676-heading-1",
+        "template--16285548839099__0fe61544-3604-4cee-b4b2-41110ab73676-text-1"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".disable-image-padding-width {max-width: 100%;}",
+        ".color-background-1 {background: rgba(35, 68, 150, 1);}",
+        ".image-with-text__media {border: none;}",
+        ".image-with-text__heading {color: white;}",
+        ".image-with-text__text p {color: white;}",
+        "@media screen and (max-width: 749px) {.disable-image-padding-width {padding-left: 0; } .image-with-text__heading.h1 {padding-top: 2rem; } .image-with-text__content {padding: 0 2rem; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/download_1.webp",
+        "enable_image_opacity": false,
+        "image_opacity_color": "",
+        "image_opacity": 0,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "enable_custom_content_width": true,
+        "custom_content_width": "450px",
+        "content_layout": "no-overlap",
+        "image_disable_edge_padding": false,
+        "section_color_scheme": "inverse",
+        "color_scheme": "inverse",
+        "enable_button_custom_color": false,
+        "button_bg_color": "",
+        "button_color": "#ffffff",
+        "custom_class": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 21,
+        "mobile_padding_bottom": 74
+      }
+    },
+    "rich_text_RxF9bJ": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_HDGkdx": {
+          "type": "caption",
+          "settings": {
+            "caption": "save now",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large"
+          }
+        },
+        "heading_e4Qj6p": {
+          "type": "heading",
+          "settings": {
+            "heading": "$20 off Air Blazers",
+            "heading_size": "h1"
+          }
+        },
+        "text_qBydBN": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Save $20 on select Air Blazers when you pre-order</h4>"
+          }
+        },
+        "button_cx86Ve": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_HDGkdx",
+        "heading_e4Qj6p",
+        "text_qBydBN",
+        "button_cx86Ve"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 76,
+        "padding_bottom": 0
+      }
+    },
+    "635f4af8-ab9d-4fb7-a5c1-5ea978c4dd5e": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "disable_heading_tag": true,
+        "show_seo_title": false,
+        "show_seo_content_product_content": false,
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "",
+        "products_mentioned": [
+          "air-blazer-solid-black",
+          "air-blazer-solid-blue",
+          "air-blazer-melange-burgundy",
+          "air-blazer-solid-charcoal",
+          "air-blazer-melange-charcoal",
+          "air-blazer-melange-grey",
+          "air-blazer-solid-khaki",
+          "air-blazer-solid-navy",
+          "air-blazer-melange-navy",
+          "air-blazer-solid-olive"
+        ],
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "custom_class": "",
+        "view_all_style": "outline",
+        "enable_desktop_slider": false,
+        "color_scheme": "inverse",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "hide_arrows_mobile": false,
+        "enable_image_opacity": false,
+        "image_opacity_color": "",
+        "image_opacity": 10,
+        "padding_top": 0,
+        "padding_bottom": 76,
+        "padding_top_mob": 45,
+        "padding_bottom_mob": 45
+      }
+    },
+    "rich_text_TCfXyL": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_WfEhmN": {
+          "type": "caption",
+          "settings": {
+            "caption": "save now",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large"
+          }
+        },
+        "heading_4qRrTz": {
+          "type": "heading",
+          "settings": {
+            "heading": "$10 off Air Pants",
+            "heading_size": "h1"
+          }
+        },
+        "text_8ngYJK": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Save $10 on select Air Pants when you pre-order</h4>"
+          }
+        },
+        "button_jjPJ8A": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_WfEhmN",
+        "heading_4qRrTz",
+        "text_8ngYJK",
+        "button_jjPJ8A"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 76,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection_Ht3aD6": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "disable_heading_tag": true,
+        "show_seo_title": false,
+        "show_seo_content_product_content": false,
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "",
+        "products_mentioned": [
+          "air-chinos-black",
+          "air-chinos-blue",
+          "air-chinos-melange-burgundy",
+          "air-chinos-melange-charcoal",
+          "air-chinos-charcoal",
+          "air-chinos-melange-grey",
+          "air-chinos-khaki",
+          "air-chinos-navy",
+          "air-chinos-melange-navy",
+          "air-chinos-olive"
+        ],
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "custom_class": "",
+        "view_all_style": "outline",
+        "enable_desktop_slider": false,
+        "color_scheme": "inverse",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "hide_arrows_mobile": false,
+        "enable_image_opacity": false,
+        "image_opacity_color": "",
+        "image_opacity": 10,
+        "padding_top": 76,
+        "padding_bottom": 76,
+        "padding_top_mob": 45,
+        "padding_bottom_mob": 45
+      }
+    },
+    "3a22de81-be24-4d4c-baed-159f8a3f802e": {
+      "type": "multirow",
+      "blocks": {
+        "template--16285548839099__3a22de81-be24-4d4c-baed-159f8a3f802e-row-1": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/download.jpg",
+            "caption": "",
+            "heading": "Pants for any occasion.",
+            "text": "<p>We all have that one sibling that's more casual. When you wear a dress shirt, they wear a tee; if the situation calls for a black tie, they show up in a blazer with a pocket square. Meet the five-pocket brother of our popular Performance Pants, now available in six colors.</p>",
+            "button_label": "SHOP PANTS",
+            "button_link": "shopify://collections/all-pants",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16285548839099__3a22de81-be24-4d4c-baed-159f8a3f802e-row-2": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/download_2.webp",
+            "caption": "",
+            "heading": "Blazers dressed up or down.",
+            "text": "<p>The Blazer of the future has arrived - Zero hassle, all style, and then some! These have extreme stretch, don't wrinkle, NEVER need dry cleaning (just throw them in the wash as if it's a tee), and are so versatile that you can wear them with your favorite pair of jeans.</p>",
+            "button_label": "SHOP BLAZERS",
+            "button_link": "shopify://products/performance-blazer-solid-navy",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__3a22de81-be24-4d4c-baed-159f8a3f802e-row-1",
+        "template--16285548839099__3a22de81-be24-4d4c-baed-159f8a3f802e-row-2"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media screen and (min-width: 750px) {.collapse-padding .image-with-text__grid:not(.image-with-text__grid--reverse) .image-with-text__content:not(.image-with-text__content--desktop-center) {padding-left: 20px; }}"
+      ],
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "mobile_content_alignment": "left",
+        "padding_top": 8,
+        "padding_bottom": 36
+      }
+    },
+    "multirow_6DLirQ": {
+      "type": "multirow",
+      "blocks": {
+        "row_tf8JQB": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/download.jpg",
+            "caption": "",
+            "heading": "Pants for any occasion lorem ipsum",
+            "text": "<p>We all have that one sibling that's more casual. When you wear a dress shirt, they wear a tee; if the situation calls for a black tie, they show up in a blazer with a pocket square. Meet the five-pocket brother of our popular Performance Pants, now available in six colors.</p>",
+            "button_label": "SHOP PANTS",
+            "button_link": "shopify://collections/all-pants",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        }
+      },
+      "block_order": [
+        "row_tf8JQB"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-left",
+        "section_color_scheme": "scheme-a3a7c764-cf2c-45dd-9caa-e0c93fcfdd67",
+        "row_color_scheme": "inverse",
+        "mobile_content_alignment": "left",
+        "padding_top": 8,
+        "padding_bottom": 36
+      }
+    },
+    "44263359-1f2a-4d11-92b4-6e540f9c36fa": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16285548839099__44263359-1f2a-4d11-92b4-6e540f9c36fa-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "PERFORMANCE POLO",
+            "heading_size": "h0",
+            "disable_heading_tag": true
+          }
+        },
+        "00271121-d046-4d31-bffa-87848d5144fe": {
+          "type": "text",
+          "settings": {
+            "text": "Whether you're golfing, dating, working or twerking (no judgment), do it in our Polo. It moves with you, doesn't let you break a sweat, and hidden buttons prevents \"Bacon Collar.\" If comfort is everything, then these polos are too.",
+            "text_style": "body"
+          }
+        },
+        "template--16285548839099__44263359-1f2a-4d11-92b4-6e540f9c36fa-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SHOP NOW",
+            "button_link_1": "shopify://products/performance-polo",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__44263359-1f2a-4d11-92b4-6e540f9c36fa-heading-1",
+        "00271121-d046-4d31-bffa-87848d5144fe",
+        "template--16285548839099__44263359-1f2a-4d11-92b4-6e540f9c36fa-buttons-1"
+      ],
+      "custom_css": [
+        "p {letter-spacing: normal; opacity: 1; color: white;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/download_3.webp",
+        "enable_image_opacity": true,
+        "image_opacity_color": "#000000",
+        "image_overlay_opacity": 60,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "custom_class": "",
+        "desktop_content_alignment": "center",
+        "enable_custom_width": false,
+        "custom_width": 58,
+        "section_link": "",
+        "color_scheme": "scheme-c5c53182-f9fd-4ccd-a3c3-3a8dd3d45a41",
+        "background_color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "10cee697-1caa-45ce-a5a9-4842031282af": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16285548839099__10cee697-1caa-45ce-a5a9-4842031282af-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Customer Reviews",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__10cee697-1caa-45ce-a5a9-4842031282af-heading-1"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "feeb7e7e-db84-43b2-9e81-02812a3efdfb": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-1": {
+          "type": "column",
+          "settings": {
+            "hide_from_countries": false,
+            "title": "<strong>Danny W.</strong>",
+            "disable_heading_tag": true,
+            "text": "<p><em>\"This is a great polo and my new favorite polo. I've tried polos from all the big brands over the years and this is the most flattering, the easiest to care for, and travels the best.\"</em></p><h6>-  31 JAN 2022, PERFORMANCE POLO</h6>",
+            "link_label": "",
+            "link": "",
+            "enable_image_link": false,
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-2": {
+          "type": "column",
+          "settings": {
+            "hide_from_countries": false,
+            "title": "<strong>Christine W.</strong>",
+            "disable_heading_tag": true,
+            "text": "<p><em>\"I bought these [pants] as a gift for my husband as he was on the hunt for the \"perfect work pant.\" To say he loved these is an understatement. [...] He says he's never buying any other work pant from here on out, which says something!\"</em></p><h6>- 02 FEB 2022, PERFORMANCE PANTS</h6>",
+            "link_label": "",
+            "link": "",
+            "enable_image_link": false,
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-3": {
+          "type": "column",
+          "settings": {
+            "hide_from_countries": false,
+            "title": "<strong>Jacqueline S.</strong>",
+            "disable_heading_tag": true,
+            "text": "<p><em>\"This blazer accomplishes a near impossible feat: it is comfortable, fashionable, and does not require trips to the dry cleaner. Will be ordering another one soon.\"</em></p><h6> - 13 JAN 2022, PERFORMANCE BLAZER</h6>",
+            "link_label": "",
+            "link": "",
+            "enable_image_link": false,
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        }
+      },
+      "block_order": [
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-1",
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-2",
+        "template--16285548839099__feeb7e7e-db84-43b2-9e81-02812a3efdfb-column-3"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "show_overlay": false,
+        "custom_class": "",
+        "desktop_content_position": "middle-center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "remove_padding_horizontal": false,
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 38
+      }
+    },
+    "collapsible_content_MLhtRq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_WgfmHy": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_hQzPU7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_3Fjini": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_BTJHyx": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_WgfmHy",
+        "collapsible_row_hQzPU7",
+        "collapsible_row_3Fjini",
+        "collapsible_row_BTJHyx"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Collapsible content",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product_image_with_text_icons_blocks_JbbRBh": {
+      "type": "product-image-with-text-icons-blocks",
+      "blocks": {
+        "heading_AmrcQw": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h2"
+          }
+        },
+        "text_HQ4Thp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AmrcQw",
+        "text_HQ4Thp"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/olive_PRS005_R_d624575e-015e-4ba2-a5eb-fa5be001d622.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_class": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "enable_image_opacity": false,
+        "image_opacity_color": "",
+        "image_opacity": 10,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 21,
+        "mobile_padding_bottom": 74
+      }
+    },
+    "image_banner_PaUrxb": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_7XQxjM": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1",
+            "disable_heading_tag": true
+          }
+        },
+        "text_8PbzfN": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_GyJkk9": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_7XQxjM",
+        "text_8PbzfN",
+        "buttons_GyJkk9"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "enable_image_opacity": true,
+        "image_opacity_color": "#000000",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "custom_class": "",
+        "desktop_content_alignment": "center",
+        "enable_custom_width": false,
+        "custom_width": 58,
+        "section_link": "",
+        "color_scheme": "",
+        "background_color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_9DLy8N",
+    "video_gPifRe",
+    "bd13231b-ed06-400e-bde1-92098aded2d7",
+    "0fe61544-3604-4cee-b4b2-41110ab73676",
+    "rich_text_RxF9bJ",
+    "635f4af8-ab9d-4fb7-a5c1-5ea978c4dd5e",
+    "rich_text_TCfXyL",
+    "featured_collection_Ht3aD6",
+    "3a22de81-be24-4d4c-baed-159f8a3f802e",
+    "multirow_6DLirQ",
+    "44263359-1f2a-4d11-92b4-6e540f9c36fa",
+    "10cee697-1caa-45ce-a5a9-4842031282af",
+    "feeb7e7e-db84-43b2-9e81-02812a3efdfb",
+    "collapsible_content_MLhtRq",
+    "product_image_with_text_icons_blocks_JbbRBh",
+    "image_banner_PaUrxb"
+  ]
+}

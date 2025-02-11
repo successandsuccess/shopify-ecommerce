@@ -1,0 +1,140 @@
+{%- capture availability_filter_load -%}
+  {%- render 'availability-filter-check' -%}
+{%- endcapture -%}
+
+<div class="dtc-categories">
+  {% if section.settings.header != blank %}
+    <div class="dtc-header-wrapper">
+      <h1>{{ section.settings.header }}</h1>
+      {% if section.blocks.size > 10 %}
+        <div class="btn-wrap">
+          <a class="prev-btn slick-disabled" data-direction="slickPrev">
+            {{ images['ma.svg'] | image_url: width: 40 | image_tag: alt: 'arrow', loading: 'lazy' }}
+          </a>
+          <a class="next-btn" data-direction="slickNext">
+            {{ images['ma.svg'] | image_url: width: 40 | image_tag: alt: 'arrow', loading: 'lazy' }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if section.blocks.size > 0 %}
+    <div class="dtc-slider">
+      {% for block in section.blocks %}
+        <div class="dtc-item dtc-cat-box">
+          {% case block.type %}
+            {% when 'product' %}
+              <a href="/products/{{ block.settings.product-selected }}">
+                {{ block.settings.product-image | image_url: width: 400 | image_tag: alt: block.settings.product-image.alt, loading: 'lazy' }}
+                <div class="dtc-span-div">
+                  <span>{{ block.settings.product-title }}</span>
+                </div>
+              </a>
+            {% when 'collection' %}
+              <a href="/collections/{{ block.settings.collection-selected }}{% if availability_filter_load %}{{ availability_filter_load }}{% endif %}">
+                {{ block.settings.collecton-img | image_url: width: 1600 | image_tag: alt: block.settings.collecton-img.alt, loading: 'lazy' }}
+                <div class="dtc-span-div">
+                  <span>{{ block.settings.collection-title }}</span>
+                </div>
+              </a>
+          {% endcase %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+<script>
+  window.addEventListener('DOMContentLoaded', function(){
+    $('.dtc-slider').slick({
+        rows: 2,
+        dots: false,
+        arrows: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 5.5,
+        slidesToScroll: 5,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2.5 ,
+                    slidesToScroll: 2
+                }
+            }
+        ]
+    });
+    $(".next-btn, .prev-btn").click(function () {
+        let direction = $(this).data("direction");
+        $(".dtc-slider").slick(direction);
+    });
+    $('.dtc-slider').on("afterChange", function () {
+        let isTheLastSlide = $(".slick-next").hasClass("slick-disabled");
+        let isTheFirstSlide = $(".slick-prev").hasClass("slick-disabled");
+        $(".next-btn").toggleClass("slick-disabled", isTheLastSlide);
+        $(".prev-btn").toggleClass("slick-disabled", isTheFirstSlide);
+    });
+  })
+</script>
+{% schema %}
+  {
+    "name": "DTC CATEGORIES",
+    "class": "dtc-categories-collection-class",
+    "settings": [
+      {
+        "type": "text",
+        "id": "header",
+        "label": "Header",
+        "default": "Explore Everything"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product Selected",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product-selected",
+            "label": "Product Selected"
+          },
+          {
+            "type": "image_picker",
+            "id": "product-image",
+            "label": "Product Image"
+          },
+          {
+            "type": "text",
+            "id": "product-title",
+            "label": "Product Title"
+          }
+        ]
+      },
+      {
+        "type": "collection",
+        "name": "Collection Selected",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection-selected",
+            "label": "Collection Selected"
+          },
+          {
+            "type": "text",
+            "id": "collection-title",
+            "label": "Collection Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "collecton-img",
+            "label": "Collection Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "DTC CATEGORIES"
+      }
+    ]
+  }
+{% endschema %}

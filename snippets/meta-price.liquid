@@ -1,0 +1,49 @@
+{%- comment -%}
+  Description
+  This snippet renders the correct product price, considering discount metaobjects and dealroom tags.
+
+  Parameters
+    - returns: <Boolean> Flags if the snippet must return a value. Default: false.
+{%- endcomment -%}
+
+{%- comment -%} Sets default price {%- endcomment -%}
+{%- assign single_item_price = product.price -%}
+{%- comment -%} Exception: 'dealroom' and '2021wintershirt39' discount values come from product.price {%- endcomment -%}
+{%- unless product.tags contains 'dealroom' or product.tags contains '2021wintershirt39' -%}
+  {%- assign price_found = false -%}
+  {%- for discount in shop.metaobjects.discount.values -%}
+    {%- for discount_collection in discount.specific_collections.value -%}
+      {%- comment -%} Checks for a current collection match first {%- endcomment -%}
+      {%- if collection.handle != blank -%}
+        {%- if discount_collection.handle == collection.handle -%}
+          {%- if discount.single_item_price != blank -%}
+            {%- assign single_item_price = discount.single_item_price -%}
+            {%- assign price_found = true -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- unless price_found == true -%}
+      {%- comment -%} Subsequently, looks for a match within product collections {%- endcomment -%}
+        {%- for product_collection in product.collections -%}
+          {%- if product_collection.handle == discount_collection.handle and product_collection.handle != 'dealroom' -%}
+            {%- comment -%} We should only replace the default price if the discount one is actually setup {%- endcomment -%}
+            {%- if discount.single_item_price != blank -%}
+              {%- assign single_item_price = discount.single_item_price.value -%}
+              {%- assign price_found = true -%}
+              {%- break -%}
+            {%- endif -%} 
+          {%- endif -%}
+        {%- endfor -%} {%- comment -%} Product Collections loop end {%- endcomment -%}
+      {%- endunless -%}
+    {%- endfor -%} {%- comment -%} Discount Collections loop end {%- endcomment -%}
+    {%- if price_found == true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%} {%- comment -%} Discount loop end {%- endcomment -%}
+{%- endunless -%}
+
+{%- if returns -%}
+  {%- assign single_item_price = single_item_price | money_without_trailing_zeros | remove: ' ' | remove: '$' -%}
+  {{- single_item_price -}}
+{%- endif -%}

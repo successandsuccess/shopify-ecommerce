@@ -1,0 +1,581 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "6c4a232b-fb75-4e9c-a026-d22ba9973d93": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16285583376571__6c4a232b-fb75-4e9c-a026-d22ba9973d93-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>#TwillsWeddingSZN</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "template--16285583376571__6c4a232b-fb75-4e9c-a026-d22ba9973d93-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Summer weddings are hot hot hot... so that's why we're highlighting styles that are both comfortable AND stylish AF.(Plus, they're quite possibly the best sweat-and-dance-floor-proof clothing in existence.)Be sure to tag us in your outfits @Twillory with <strong>#TwillsWeddingSZN</strong> for your chance to win $500 in Twillory store credit. One winner will be chosen at the end of June.",
+            "text_style": "body"
+          }
+        },
+        "template--16285583376571__6c4a232b-fb75-4e9c-a026-d22ba9973d93-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16285583376571__6c4a232b-fb75-4e9c-a026-d22ba9973d93-heading-1",
+        "template--16285583376571__6c4a232b-fb75-4e9c-a026-d22ba9973d93-text-1",
+        "template--16285583376571__6c4a232b-fb75-4e9c-a026-d22ba9973d93-buttons-1"
+      ],
+      "custom_css": [
+        "p {color: white; letter-spacing: normal;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/download_4.webp",
+        "image_overlay_opacity": 10,
+        "image_height": "medium",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": true,
+        "custom_class": "",
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-2",
+        "background_color_scheme": "scheme-c5c53182-f9fd-4ccd-a3c3-3a8dd3d45a41",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "f0a00b04-521c-42eb-bade-9dac72e84990": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16285583376571__f0a00b04-521c-42eb-bade-9dac72e84990-column-1": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Free Shipping</strong>",
+            "text": "<p>Orders $75+</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--16285583376571__f0a00b04-521c-42eb-bade-9dac72e84990-column-2": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Free Returns</strong>",
+            "text": "<p>All orders</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--16285583376571__f0a00b04-521c-42eb-bade-9dac72e84990-column-3": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Free Exchanges</strong>",
+            "text": "<p>All Orders</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16285583376571__f0a00b04-521c-42eb-bade-9dac72e84990-column-1",
+        "template--16285583376571__f0a00b04-521c-42eb-bade-9dac72e84990-column-2",
+        "template--16285583376571__f0a00b04-521c-42eb-bade-9dac72e84990-column-3"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "show_overlay": false,
+        "custom_class": "",
+        "desktop_content_position": "middle-center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "remove_padding_horizontal": false,
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 26,
+        "padding_bottom": 36,
+        "mobile_padding_top": 38,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "0ca3a7df-aa33-47a7-b53d-5173c4d4f6c4": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16285583376571__0ca3a7df-aa33-47a7-b53d-5173c4d4f6c4-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>VOL 3: BLACK TIE WEDDING ATTIRE</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "template--16285583376571__0ca3a7df-aa33-47a7-b53d-5173c4d4f6c4-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Without the uncomfortable, rigid clothing or expensive price tag.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--16285583376571__0ca3a7df-aa33-47a7-b53d-5173c4d4f6c4-heading-1",
+        "template--16285583376571__0ca3a7df-aa33-47a7-b53d-5173c4d4f6c4-text-1"
+      ],
+      "custom_css": [
+        "p {letter-spacing: normal; color: white;}",
+        "@media screen and (min-width: 750px) {p {color: white; letter-spacing: normal; }}"
+      ],
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/download_6.webp",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "custom_class": "",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-c5c53182-f9fd-4ccd-a3c3-3a8dd3d45a41",
+        "background_color_scheme": "accent-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "8c6ff90c-4010-46e3-9ede-67acf1fa4343": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "EXPLORE SAFE COTTON SHIRTS",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "safecotton",
+        "products_mentioned": [
+
+        ],
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "custom_class": "",
+        "view_all_style": "outline",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "hide_arrows_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mob": 45,
+        "padding_bottom_mob": 45
+      }
+    },
+    "bdc0aea2-c791-4df8-ae60-1eedcd97db76": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "EXPLORE PERFORMANCE BLAZERS",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "suitsnblazers",
+        "products_mentioned": [
+          "performance-blazer-solid-black",
+          "performance-blazer-solid-blue",
+          "performance-blazer-pattern-bluecheck",
+          "performance-blazer-pattern-bluenavycheck",
+          "performance-blazer-pattern-blueplaid",
+          "performance-blazer-solid-charcoal",
+          "performance-blazer-melange-charcoal",
+          "performance-blazer-pattern-plaid-blue"
+        ],
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "custom_class": "",
+        "view_all_style": "outline",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "hide_arrows_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mob": 0,
+        "padding_bottom_mob": 45
+      }
+    },
+    "cb8ab68c-52a1-4428-aea8-43c79ba62c2c": {
+      "type": "image-banner",
+      "blocks": {
+        "620985ab-5bc0-4297-a767-558570b64561": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>VOL 2: DESTINATION WEDDING STYLES</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "88b1dba1-7228-4f2d-9238-491e2f6b2b87": {
+          "type": "text",
+          "settings": {
+            "text": "Without the uncomfortable, rigid clothing or expensive price tag.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "620985ab-5bc0-4297-a767-558570b64561",
+        "88b1dba1-7228-4f2d-9238-491e2f6b2b87"
+      ],
+      "custom_css": [
+        "p {color: white; letter-spacing: normal;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/download_7.webp",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "custom_class": "",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-c5c53182-f9fd-4ccd-a3c3-3a8dd3d45a41",
+        "background_color_scheme": "accent-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "48d52ed2-6784-49d4-bf9c-c57b73907794": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all-performance",
+        "products_mentioned": [
+          "untuckables-tri-blue-windowpane",
+          "leader",
+          "performance-tee",
+          "performance-polo"
+        ],
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "custom_class": "",
+        "view_all_style": "outline",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "hide_arrows_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 36,
+        "padding_top_mob": 45,
+        "padding_bottom_mob": 45
+      }
+    },
+    "8e605189-0a1a-4d74-b1da-9b07d59df265": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16285583376571__8e605189-0a1a-4d74-b1da-9b07d59df265-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>VOL 1: BACKYARD WEDDING VIBES</strong>",
+            "heading_size": "h0"
+          }
+        },
+        "template--16285583376571__8e605189-0a1a-4d74-b1da-9b07d59df265-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "These looks provide a comfy, stretchy fit for the outdoor festivities to keep you looking dapper throughout the day.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--16285583376571__8e605189-0a1a-4d74-b1da-9b07d59df265-heading-1",
+        "template--16285583376571__8e605189-0a1a-4d74-b1da-9b07d59df265-text-1"
+      ],
+      "custom_css": [
+        "p {color: white; letter-spacing: normal;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/bruno-cervera-ZpNBwBR38fA-unsplash_2.jpg",
+        "image_overlay_opacity": 30,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "custom_class": "",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-c5c53182-f9fd-4ccd-a3c3-3a8dd3d45a41",
+        "background_color_scheme": "accent-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "e9f7393a-a0e7-4653-bdd5-f5ff4bc48257": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "SHOP UNTUCK(ABLES)",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "untuckable",
+        "products_mentioned": [
+
+        ],
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "custom_class": "",
+        "view_all_style": "outline",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "hide_arrows_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mob": 45,
+        "padding_bottom_mob": 45
+      }
+    },
+    "5b688af5-4187-4d9d-87fe-134388bac87b": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "SHOP FIVE POCKET PANTS",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "",
+        "products_mentioned": [
+          "performance-five-pocket-black",
+          "performance-five-pocket-blue",
+          "performance-five-pocket-charcoal",
+          "performance-five-pocket-navy",
+          "performance-five-pocket-khaki",
+          "performance-five-pocket-pants"
+        ],
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "custom_class": "",
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "hide_arrows_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mob": 45,
+        "padding_bottom_mob": 45
+      }
+    },
+    "48868097-477f-4c99-bb6f-7da97a1ac8b8": {
+      "type": "featured-collection",
+      "custom_css": [
+
+      ],
+      "settings": {
+        "title": "SHOP PERFORMANCE POLOS",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "",
+        "products_mentioned": [
+          "performance-five-pocket-black",
+          "performance-five-pocket-blue",
+          "performance-five-pocket-charcoal",
+          "performance-five-pocket-navy",
+          "performance-five-pocket-khaki",
+          "performance-five-pocket-pants"
+        ],
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "custom_class": "",
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "hide_arrows_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mob": 0,
+        "padding_bottom_mob": 45
+      }
+    },
+    "03865c33-7da5-4441-9755-ac04df34b131": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16285583376571__03865c33-7da5-4441-9755-ac04df34b131-column-1": {
+          "type": "column",
+          "settings": {
+            "title": "✈️ Travel Savvy 🧳",
+            "text": "<p>In the likely event you are traveling for the wedding, you can rest easy knowing our clothes won't wrinkle in your suitcase. Besides, you never know if hotels nowadays have an iron on hand... not to worry with our Twills!</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--16285583376571__03865c33-7da5-4441-9755-ac04df34b131-column-2": {
+          "type": "column",
+          "settings": {
+            "title": "🕺 Dance Floor Ready 🥂",
+            "text": "<p>Dance like no one's looking thanks to our fabrics' 4-way stretch. They give you a little extra room to Robot, Electric Slide, or Dougie your way to the bar (there <em>is</em> a bar, right?).<br/>Oh and did we mention that the Performance Pants have five (yes, 5!) pockets to keep your smartphone safe & secure? Well, now ya know.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--16285583376571__03865c33-7da5-4441-9755-ac04df34b131-column-3": {
+          "type": "column",
+          "settings": {
+            "title": "👔 Breathable Fabrics 🧶",
+            "text": "<p>Made with smart technology (called Coolmax®), we can guarantee cool comfort as you enjoy the wedding with these light, breathable fabrics.<br/><strong>Note:</strong> each product will specifically mention that they have this technology.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "99d63aca-1a5e-4375-a203-47809f76b066": {
+          "type": "column",
+          "settings": {
+            "title": "💧Easy Post Care 🧼",
+            "text": "<p>After a weekend of festivities, all you have to do is throw your fabulous outfit into the washing machine and call it a day. They're easy to maintain and you'll never need extra trips to the dry cleaners again - score!</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16285583376571__03865c33-7da5-4441-9755-ac04df34b131-column-1",
+        "template--16285583376571__03865c33-7da5-4441-9755-ac04df34b131-column-2",
+        "template--16285583376571__03865c33-7da5-4441-9755-ac04df34b131-column-3",
+        "99d63aca-1a5e-4375-a203-47809f76b066"
+      ],
+      "custom_css": [
+        ".multicolumn-list h3 {font-size: 22px; padding-bottom: 1rem !important;}"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "show_overlay": false,
+        "custom_class": "",
+        "desktop_content_position": "middle-center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "remove_padding_horizontal": false,
+        "color_scheme": "inverse",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 50
+      }
+    }
+  },
+  "order": [
+    "main",
+    "6c4a232b-fb75-4e9c-a026-d22ba9973d93",
+    "f0a00b04-521c-42eb-bade-9dac72e84990",
+    "0ca3a7df-aa33-47a7-b53d-5173c4d4f6c4",
+    "8c6ff90c-4010-46e3-9ede-67acf1fa4343",
+    "bdc0aea2-c791-4df8-ae60-1eedcd97db76",
+    "cb8ab68c-52a1-4428-aea8-43c79ba62c2c",
+    "48d52ed2-6784-49d4-bf9c-c57b73907794",
+    "8e605189-0a1a-4d74-b1da-9b07d59df265",
+    "e9f7393a-a0e7-4653-bdd5-f5ff4bc48257",
+    "5b688af5-4187-4d9d-87fe-134388bac87b",
+    "48868097-477f-4c99-bb6f-7da97a1ac8b8",
+    "03865c33-7da5-4441-9755-ac04df34b131"
+  ]
+}

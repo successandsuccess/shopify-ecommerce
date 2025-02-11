@@ -1,0 +1,87 @@
+{% if size_chart == true and product.metafields["global"]["hide-size-chart"] != '<p>true</p>' %}
+
+    {% assign size_chart_popup = section.blocks | where: 'type', 'size_guide' %}
+    {% for block in size_chart_popup %}
+        {% capture size_modal %}
+        <modal-opener
+            class="product-popup-modal__opener no-js-hidden"
+            data-modal="#PopupModal-size-chart-{{ block.id }}"
+            >
+            <button
+                id="ProductPopup-size-chart-{{ block.id }}"
+                class="product-popup-modal__button link size-chart-link"
+                type="button"
+                aria-haspopup="dialog"
+            >
+                {% render 'size-guide' %}
+                <span>{{- 'products.product.size_guide_heading' | t -}}</span>
+            </button>
+            </modal-opener>
+            <modal-dialog id="PopupModal-size-chart-{{ block.id }}" class="product-popup-modal size-chart-modal page-title-{{ block.settings.page.title }}">
+                <div
+                    role="dialog"
+                    aria-label="{{ block.settings.heading }}"
+                    aria-modal="true"
+                    class="product-popup-modal__content"
+                    tabindex="-1"
+                >
+                    <div class="modal-header">
+                    <div class="h2">{{- 'products.product.popup_title' | t -}}</div>
+                    <button
+                    id="ModalClose-size-chart-{{ block.id }}"
+                    type="button"
+                    class="product-popup-modal__toggle"
+                    aria-label="{{ 'accessibility.close' | t }}"
+                    >
+                    {% render 'icon-close' %}
+                    </button>
+                </div>
+                    <div class="product-popup-modal__content-info">
+                        {{ block.settings.page.content }}
+                    </div>
+                </div>
+            </modal-dialog>
+            {% comment %} Quickview Custom Popup {% endcomment %}
+            <div class="quick-modal size-chart-modal hidden">
+                <div
+                    role="dialog"
+                    aria-label="{{ block.settings.heading }}"
+                    aria-modal="true"
+                    class="product-popup-modal__content"
+                    tabindex="-1"
+                >
+                    <div class="modal-header">
+                    <div class="h2">{{- 'products.product.popup_title' | t -}}</div>
+                    <button
+                    id="ModalClose-size-chart-{{ block.id }}"
+                    type="button"
+                    class="product-popup-modal__toggle"
+                    aria-label="{{ 'accessibility.close' | t }}"
+                    >
+                    {% render 'icon-close' %}
+                    </button>
+                </div>
+                    <div class="product-popup-modal__content-info">
+                        {{ block.settings.page.content }}
+                    </div>
+                </div>
+            </div>
+            {% comment %} Quickview Custom Popup {% endcomment %}
+        {% endcapture %}
+        
+        {%- liquid
+            assign product_type_default = product.type | handleize
+            assign product_type_block = block.settings.heading | handleize
+            assign product_title_default = product.title | handleize 
+        -%}
+       
+        {% if product_type_default == product_type_block and block.settings.page.content != blank %}
+            {{ size_modal }}
+            {% break %}
+        {% elsif product_title_default contains product_type_block and block.settings.page.content != blank %}
+            {{ size_modal }}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    {% assign size_chart = true %}
+  {% endif %}

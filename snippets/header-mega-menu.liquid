@@ -1,0 +1,240 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+{%- capture availability_filter_load -%}
+  {%- render 'availability-filter-check' -%}
+{%- endcapture -%}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      {% assign link_title = link.title | handleize %}
+      {% capture int_links %}
+        {% if link.url contains 'https://' or link.url contains 'http://' or link.url contains '#' %}
+          {% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}{{ link.url }}{{ availability_filter_load }}{% else %}{{ link.url }}{% endif %}{% else %}{{ link.url }}{% endunless %}
+        {% else %}
+          {% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}{{ shop.url }}{{ link.url }}{{ availability_filter_load }}{% else %}{{ shop.url }}{{ link.url }}{% endif %}{% else %}{{ shop.url }}{{ link.url }}{% endunless %}
+        {% endif %}
+      {% endcapture %}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu{% if section.settings.show_menu_hover %} mega-menu-hoverActive{% endif %}">
+              <summary id="HeaderMenu-{{ link.handle }}" class="header__menu-item list-menu__item link focus-inset{% if link.current %} header__active-menu-item{% endif %}{% if link_title contains 'sale' or link_title contains 'deal' %} sale-text{% endif %}">
+                <span>
+                  {{- link.title -}}
+                </span>
+                {% render 'icon-caret' %}
+              </summary>
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup type-{% for block in section.blocks %}{% if block.type == 'navigation_list' %}navigation--list{% endif %}{% endfor %}"
+                tabindex="-1"
+              >
+                <div class="page-width default-menu">
+                <ul
+                  class="mega-menu__list{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  role="list"
+                >
+                  {%- for childlink in link.links -%}
+                  {% capture child_links %}
+                    {% if childlink.url contains 'https://' or childlink.url contains 'http://' or childlink.url contains '#' %}
+                      {% unless childlink.url contains 'products' and childlink.url contains 'collection' %}{% if link.type == 'collection_link' or childlink.url contains 'collections' %}{{ childlink.url }}{{ availability_filter_load }}{% else %}{{ childlink.url }}{% endif %}{% else %}{{ childlink.url }}{% endunless %}
+                    {% else %}
+                      {% unless childlink.url contains 'products' and childlink.url contains 'collection' %}{% if link.type == 'collection_link' or childlink.url contains 'collections' %}{{ shop.url }}{{ childlink.url }}{{ availability_filter_load }}{% else %}{{ shop.url }}{{ childlink.url }}{% endif %}{% else %}{{ shop.url }}{{ childlink.url }}{% endunless %}
+                    {% endif %}
+                  {% endcapture %}
+                    <li>
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ child_links }}"
+                        {% if child_links contains shop.url or child_links contains '#' %}{% else %}target="_blank"{% endif %}
+                        class="mega-menu__link mega-menu__link--level-2 link"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title }}
+                      </a>
+                      {%- if childlink.links != blank -%}
+                        <ul class="list-unstyled" role="list">
+                          {%- for grandchildlink in childlink.links -%}
+                            {% capture grandchild_links %}
+                              {% if grandchildlink.url contains 'https://' or grandchildlink.url contains 'http://' or grandchildlink.url contains '#' %}
+                                {% unless grandchildlink.url contains 'products' and grandchildlink.url contains 'collection' %}{% if grandchildlink.type == 'collection_link' or grandchildlink.url contains 'collections' %}{{ grandchildlink.url }}{{ availability_filter_load }}{% else %}{{ grandchildlink.url }}{% endif %}{% else %}{{ grandchildlink.url }}{% endunless %}
+                              {% else %}
+                                {% unless grandchildlink.url contains 'products' and grandchildlink.url contains 'collection' %}{% if grandchildlink.type == 'collection_link' or grandchildlink.url contains 'collections' %}{{ shop.url }}{{ grandchildlink.url }}{{ availability_filter_load }}{% else %}{{ shop.url }}{{ grandchildlink.url }}{% endif %}{% else %}{{ shop.url }}{{ grandchildlink.url }}{% endunless %}
+                              {% endif %}
+                            {% endcapture %}
+                            <li>
+                              <a
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchild_links }}"
+                                data-hover="{{ grandchildlink.title | prepend: 'nav-hover-' | handleize | append: '_350x.jpg' | file_url }}"
+                                {% if grandchild_links contains shop.url or grandchild_links contains '#' %}{% else %}target="_blank"{% endif %}
+                                class="{% if section.settings.change_image_hover %}mega-menu-hover-link{% endif %} mega-menu__link link"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ grandchildlink.title }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+                <div class="featured-image-block">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'navigation_list' %}
+                      {% assign link_title = link.title | handleize %}
+                      {% assign block_handle = block.settings.heading | handleize %}
+                      {% if link_title == block_handle %}
+                          {% if block.settings.feature_image_link != blank %}<a href="{{ block.settings.feature_image_link }}" class="feature-image-link">{% endif %}
+                            {% if block.settings.feature_image != blank %}
+                              <img src="{{ block.settings.feature_image | image_url: width: 350, height: 430 }}" class="featured-image mega-menu-featured-image" alt="{{ block.settings.feature_image.alt }}" loading="lazy" width="350" height="430"/>
+                            {% endif %}
+                          {% if block.settings.feature_image_link != blank %}</a>{% endif %}
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              </div>
+            </details>
+          </header-menu>
+        {%- else -%}
+        {%- liquid
+          assign block_value = false
+          assign block_type = ''
+          for block in section.blocks
+            assign image_blocks = block.settings.heading | handleize
+            if link_title == image_blocks
+              assign block_value = true
+              assign block_type = block.type
+              assign current_block = block  
+              break; 
+            endif
+          endfor
+        -%}
+        
+        {% if link.links == blank and block_value == true %}
+          {%- if block_type == 'collection_images' or block_type == 'collection_cards' -%}
+            <header-menu>
+              <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu {% if section.settings.show_menu_hover %} mega-menu-hoverActive{% endif %} type-{{ block_type }} block-menu">
+                <summary id="HeaderMenu-{{ link.handle }}" class="header__menu-item list-menu__item link focus-inset{% if link.current %} header__active-menu-item{% endif %}">
+                  <span>
+                    {{- link.title -}}
+                  </span>
+                </summary>
+                <div
+                  id="MegaMenu-Content-{{ forloop.index }}"
+                  class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup type--{{ block_type }}"
+                  tabindex="-1"
+                >
+                  <ul class="mega-menu__list cards-list page-width" role="list">
+                    {% case block_type %}
+                      {% when 'collection_images' %}
+                        {%- for i in (1..4) -%}
+                          
+                          {%- liquid
+                            assign collection_card = 'collection_' | append: i 
+                            assign collection_text = 'collection_text_' | append: i 
+                            assign collection_custom_title = 'collection_title_' | append: i 
+                            assign collection__image = 'collection__image_' | append: i 
+                            assign card_image = current_block.settings[collection_card] 
+                          -%}
+
+                          {% if card_image != blank %}
+                            <li class="grid-item">
+                              <a href="{% unless card_image.url contains 'products' and card_image.url contains 'collection' %}{% if link.type == 'collection_link' or card_image.url contains 'collections' %}{{ card_image.url }}{{ availability_filter_load }}{% else %}{{ card_image.url }}{% endif %}{% else %}{{ card_image.url }}{% endunless %}">
+                                <div class="card-list-image-wrapper">
+                                  {%- if current_block.settings[collection__image] != blank -%}
+                                    <img src="{{ current_block.settings[collection__image] | image_url: width: 292, height: 364 }}" width="292" height="364" loading='lazy' alt="{{ current_block.settings[collection__image].alt }}"/>
+                                  {% else  %}
+                                    <img
+                                      src="{{ card_image.featured_image | image_url: width: 292, height: 364 }}"
+                                      alt="{{ card_image.featured_image.alt }}"
+                                      height="292"
+                                      width="364"
+                                      loading="lazy"
+                                    >
+                                  {%- endif -%}
+                                </div>
+                                <div class="collection-title h3">{% if current_block.settings[collection_custom_title] != blank %}{{ current_block.settings[collection_custom_title] }}{% else %}{{ card_image.title }}{% endif %}</div>
+                                {% if current_block.settings[collection_text] != blank %}
+                                <p class="collection-desc">{{ current_block.settings[collection_text] }}</p>
+                                {% endif %}
+                              </a>
+                            </li>
+                          {% endif %}
+                        {% endfor %}
+                        {% when 'collection_cards' %}
+                          {%- for i in (1..4) -%}
+
+                          {%- liquid
+                            assign collections_card = 'collection_card_' | append: i 
+                            assign card_custom_title = 'card_title_' | append: i 
+                            assign collections_text = 'card_text_' | append: i 
+                            assign collections__image = 'card_image_' | append: i 
+                            assign col_card_image = current_block.settings[collections_card]
+                          -%}
+
+                          {% if col_card_image != blank %}
+                            <li class="grid-item center">
+                                {%- if current_block.settings[collections__image] != blank -%}
+                                  <img src="{{ current_block.settings[collections__image] | image_url: width: 292, height: 364 }}" width="292" height="364" loading='lazy' alt="{{ current_block.settings[collections__image].alt }}"/>
+                                {% else  %}
+                                  <img
+                                    src="{{ col_card_image.featured_image | image_url: width: 292, height: 364 }}"
+                                    alt="{{ col_card_image.featured_image.alt }}"
+                                    height="292"
+                                    width="364"
+                                    loading="lazy"
+                                  >
+                                {%- endif -%}
+                                <div class="h3 collection-title">{% if current_block.settings[card_custom_title] != blank %}{{ current_block.settings[card_custom_title] }}{% else %}{{ col_card_image.title }}{% endif %}</div>
+                                {% if current_block.settings[collections_text] != blank %}
+                                <p class="collection-desc">{{ current_block.settings[collections_text] }}</p>
+                                {% endif %}
+                                <a href="{% unless col_card_image.url contains 'products' and col_card_image.url contains 'collection' %}{% if link.type == 'collection_link' or col_card_image.url contains 'collections' %}{{ col_card_image.url }}{{ availability_filter_load }}{% else %}{{ col_card_image.url }}{% endif %}{% else %}{{ col_card_image.url }}{% endunless %}" class="button collection-card-btn">{{ section.settings.collection_card_btn }}</a>
+                            </li>
+                          {% endif %}
+                        {% endfor %}
+                      {% endcase %}
+                  </ul>
+                </div>
+              </details>
+            </header-menu>
+          {% endif %}
+        {%- else -%}
+          {%- assign market_link = int_links -%}
+          {% if int_links contains 'e-gift-cards' %}
+            {%- case cart.currency.iso_code -%}
+              {% when 'GBP' %}
+                {%- assign market_link = int_links | rstrip | append: '-uk' -%}
+            {%- endcase -%}
+          {% endif %}
+          <a id="HeaderMenu-{{ link.handle }}" href="{{ market_link }}" {% if int_links contains shop.url or int_links contains '#' %}{% else %}target="_blank"{% endif %} class="header__menu-item list-menu__item link link--text focus-inset{% if link.current %} header__active-menu-item{% endif %}{% if link_title contains 'sale' or link_title contains 'deal' %} sale-text{% endif %}"{% if link.current %} aria-current="page"{% endif %}>
+              <span>
+                {{- link.title -}}
+              </span>
+          </a>
+        {%- endif -%}
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+
+<script>
+  $('.mega-menu-hover-link').on('mouseenter', function() {
+  $('.mega-menu-featured-image').attr('src', $(this).data('hover'));
+});
+</script>

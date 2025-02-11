@@ -1,0 +1,7 @@
+{%- if settings.enable_default_filter == true and settings.filter_handle != blank -%}
+    {%- if cart.attributes.availability == blank -%}
+     {{- settings.filter_handle | strip -}}
+    {%- else -%}
+      {{- cart.attributes.availability | strip -}}
+    {%- endif -%}
+{%- endif -%}

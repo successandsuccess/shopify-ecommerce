@@ -1,0 +1,300 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "disable_heading_tag": true,
+        "show_collection_description": false,
+        "show_collection_image": true,
+        "secondary_nav": "dtc-collection-nav-menu",
+        "color_scheme": "background-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "d303e1af-4f1d-431f-8e73-df94775d4a0c": {
+          "type": "collection_list",
+          "disabled": true,
+          "settings": {
+            "collection_list_item": "shirts",
+            "collection_list_custom_title": "",
+            "collection_list_custom_image": "shopify://shop_images/dress-shirts_b7620a0d-c989-435a-9bee-303c7aed0e5c.webp",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "019f61f5-ac19-42e1-9a74-2165f13dacae": {
+          "type": "collection_list",
+          "disabled": true,
+          "settings": {
+            "collection_list_item": "thepoloshop",
+            "collection_list_custom_title": "Polo Shop",
+            "collection_list_custom_image": "shopify://shop_images/the-polo-shop_81c12090-b3c9-4f19-86bc-6e87f4f0cdf4.webp",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "8a7027d1-e192-4a9c-9a87-676619179dd9": {
+          "type": "collection_list",
+          "disabled": true,
+          "settings": {
+            "collection_list_item": "suitsnblazers",
+            "collection_list_custom_title": "",
+            "collection_list_custom_image": "shopify://shop_images/suits-_-blazres.webp",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "5f503e94-8729-4ef1-b9ca-8df251beb809": {
+          "type": "collection_list",
+          "disabled": true,
+          "settings": {
+            "collection_list_item": "all-pants",
+            "collection_list_custom_title": "All Pants",
+            "collection_list_custom_image": "shopify://shop_images/pants.webp",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "815ab80c-51cb-4d61-923c-4021718f0f22": {
+          "type": "collection_list",
+          "disabled": true,
+          "settings": {
+            "collection_list_item": "athleisure",
+            "collection_list_custom_title": "",
+            "collection_list_custom_image": "shopify://shop_images/athleisure.webp",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "outerwear": {
+          "type": "collection_list",
+          "disabled": true,
+          "settings": {
+            "collection_list_item": "outerwear",
+            "collection_list_custom_title": "",
+            "collection_list_custom_image": "shopify://shop_images/Outerwear_6a322886-4db3-4529-a190-338d1c12111c.webp",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "undertwills": {
+          "type": "collection_list",
+          "disabled": true,
+          "settings": {
+            "collection_list_item": "undertwills",
+            "collection_list_custom_title": "",
+            "collection_list_custom_image": "shopify://shop_images/Undertwills.webp",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "socks": {
+          "type": "collection_list",
+          "disabled": true,
+          "settings": {
+            "collection_list_item": "socks",
+            "collection_list_custom_title": "",
+            "collection_list_custom_image": "shopify://shop_images/Socks.webp",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "underwear-socks": {
+          "type": "collection_list",
+          "disabled": true,
+          "settings": {
+            "collection_list_item": "underwear-socks",
+            "collection_list_custom_title": "",
+            "collection_list_custom_image": "shopify://shop_images/underwear-socks.webp",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        }
+      },
+      "block_order": [
+        "d303e1af-4f1d-431f-8e73-df94775d4a0c",
+        "019f61f5-ac19-42e1-9a74-2165f13dacae",
+        "8a7027d1-e192-4a9c-9a87-676619179dd9",
+        "5f503e94-8729-4ef1-b9ca-8df251beb809",
+        "815ab80c-51cb-4d61-923c-4021718f0f22",
+        "outerwear",
+        "undertwills",
+        "socks",
+        "underwear-socks"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 4,
+        "show_seo_title": false,
+        "show_seo_content_product_content": false,
+        "image_ratio": "custom",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "enable_image_swiper_on_mobile": true,
+        "enable_color_swatches": true,
+        "enable_seo_content_product_clickable": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "final_sale_link": "https://twillory-help-center.gorgias.help/en-US/what-does-final-sale-mean-81243",
+        "enable_filtering": true,
+        "get_menu": "",
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 38,
+        "padding_bottom": 84,
+        "padding_top_mob": 0,
+        "padding_bottom_mob": 36
+      }
+    },
+    "html_faq_section": {
+      "type": "faq",
+      "settings": {
+        "heading": "Because You Asked...",
+        "disable_heading_tag": true,
+        "heading_size": "h2",
+        "section_content": "{{ collection.metafields[\"global\"][\"faqs\"] }}",
+        "color_scheme": "",
+        "padding_top": 70,
+        "padding_bottom": 40,
+        "padding_top_mob": 90,
+        "padding_bottom_mob": 44
+      }
+    },
+    "explore-other-collections": {
+      "type": "collection-list",
+      "blocks": {
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "athleisure",
+            "collection_custom_image": "shopify://shop_images/athleisure-collection_10fe3e86-8c03-4866-ae82-e829efb3ebc5.webp",
+            "collection_custom_title": "",
+            "collection_custom_text": "",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "all-performance",
+            "collection_custom_image": "shopify://shop_images/performance-closer-collection.webp",
+            "collection_custom_title": "All Performance",
+            "collection_custom_text": "",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "undertwills",
+            "collection_custom_image": "shopify://shop_images/undertwills-boxer-collection.webp",
+            "collection_custom_title": "",
+            "collection_custom_text": "",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "7aafbe7f-7cec-4046-b972-95678e957988-featured_collection-4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "all-shirts",
+            "collection_custom_image": "shopify://shop_images/all-shirts_4c3c20bc-3668-45a0-8a30-74b20a00383f.webp",
+            "collection_custom_title": "All Shirts",
+            "collection_custom_text": "",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "7aafbe7f-7cec-4046-b972-95678e957988-featured_collection-5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shorts",
+            "collection_custom_image": "shopify://shop_images/pants-400x500.webp",
+            "collection_custom_title": "",
+            "collection_custom_text": "",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        },
+        "7aafbe7f-7cec-4046-b972-95678e957988-featured_collection-6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "suitsnblazers",
+            "collection_custom_image": "shopify://shop_images/image-6.png",
+            "collection_custom_title": "",
+            "collection_custom_text": "",
+            "enable_image_opacity": false,
+            "image_opacity_color": "",
+            "image_opacity": 10
+          }
+        }
+      },
+      "block_order": [
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-1",
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-2",
+        "template--16271007187131__cde1335e-7c20-4ce5-a6a1-27ce7a5da64f-featured_collection-3",
+        "7aafbe7f-7cec-4046-b972-95678e957988-featured_collection-4",
+        "7aafbe7f-7cec-4046-b972-95678e957988-featured_collection-5",
+        "7aafbe7f-7cec-4046-b972-95678e957988-featured_collection-6"
+      ],
+      "settings": {
+        "page_width": false,
+        "show_tite_tag_content": true,
+        "title": "Explore other collections",
+        "disable_heading_tag": true,
+        "desc": "Dive into our categories and discover your next favorite piece.",
+        "heading_size": "h2",
+        "image_ratio": "custom",
+        "reduce_image_size": true,
+        "enable_desktop_slider": true,
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "shop_btn": "",
+        "shop_btn_overlay": false,
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "custom_class": "collection-slides",
+        "padding_top": 80,
+        "padding_bottom": 140,
+        "padding_top_mob": 54,
+        "padding_bottom_mob": 132
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "html_faq_section",
+    "explore-other-collections"
+  ]
+}

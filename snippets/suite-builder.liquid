@@ -1,0 +1,304 @@
+{% assign url = relatedProduct.url %}
+{% assign image = relatedProduct.featured_image %}
+{% assign title = relatedProduct.title %}
+{% assign handle = relatedProduct.handle %}
+{% assign po__message = relatedProduct.metafields.pre_order.message %}
+
+{% liquid
+  assign single_item_price_text = blank
+  for discount in shop.metaobjects.discount.values
+  
+    for collection_item in discount.specific_collections.value
+      if collection_item == collection or relatedProduct.collections contains collection_item
+
+        if discount.single_item_price != blank and discount.single_item_price_text != blank
+            if localization.country.iso_code == 'US'
+              assign single_item_price = discount.single_item_price.value | money_without_trailing_zeros | remove: ' '
+              assign single_item_slash_price = discount.single_item_slash_price.value | money_without_trailing_zeros | remove: ' '
+            else
+              assign single_item_price = discount.single_item_price.value | money_without_trailing_zeros
+              assign single_item_slash_price = discount.single_item_slash_price.value | money_without_trailing_zeros
+            endif
+            assign single_item_price_text = discount.single_item_price_text | replace: "[price]", single_item_price | replace: "[slash_price]", single_item_slash_price
+        endif
+      endif
+    endfor
+  endfor
+-%}
+
+<div class="suite-builder quick-add-hidden">
+  <span class="suite-builder__title">{{ block.settings.heading }}</span>
+
+  <div class="related-product">
+    <div class="related-product__figure">
+      <a href="{{ url }}">
+        {{ image | image_url: width: '156', height: '240' | image_tag }}
+      </a>
+    </div>
+    <div class="related-product__content">
+      <div class="related-product__info">
+        <a class="related-product__title" href="{{ url }}">
+          {{ title }}
+        </a>
+        {%- render 'price',
+            product: relatedProduct,
+            use_variant: true,
+            show_badges: block.settings.show_badges,
+            price_class: 'price--suit-builder',
+            single_item_price_text: single_item_price_text
+          -%}
+      </div>
+      <form class="related-product__form">
+        {% for option in relatedProduct.options_with_values %}
+          <div class="related-product__option-container{% if forloop.last %} last-child{% endif %}{% if forloop.length == 2 or forloop.length == 1 %} full-width{% endif %}">
+            <select
+              class="related-product__select"
+              data-name="{{ option.name }}"
+              data-index="{{ forloop.index }}">
+              <option selected="true" disabled="true">{{ option.name }}:</option>
+              {% for value in option.values %}
+                <option class="related-product__option" data-name="{{ option.name }}">
+                  {{ value }}
+                </option>
+              {% endfor %}
+            </select>
+            <span class="related-product__clear" data-index="{{ forloop.index }}">
+              {% render 'icon-close' %}
+            </span>
+          </div>
+        {% endfor %}
+        <input
+          type="submit"
+          value="Select Size"
+          class="related-product__submit"
+          disabled="true" />
+        <button type="submit" class="related-product__submit--preorder">
+          {% if po__message != blank %}
+            {{ po__message }}
+          {% else %}
+            Pre-Order
+          {% endif %}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    let submitButton = document.querySelector('.related-product__submit');
+    let preorderButton = document.querySelector('.related-product__submit--preorder');
+    let suiteSelects = [...document.querySelectorAll('.related-product__select')];
+    let suiteOptions = [...document.querySelectorAll('.related-product__option')];
+    let relatedForm = document.querySelector('.related-product__form');
+    let clearButtons = document.querySelectorAll('.related-product__clear');
+    let selectedOptions = [];
+    let filledOptions = [];
+    let availableVariantsArray = [];
+    let uniqueAvailableVariantsArray = [];
+    let loading = false;
+    let selectedVariantID;
+    let productVariants = [];
+    let productOptions = [];
+
+    fetch(window.Shopify.routes.root + `products/{{ handle }}.js`)
+        .then(res => res.json())
+        .then(product => {
+            productVariants = product.variants;
+            for (variant of productVariants){
+                if (variant.title !== 'Default Title'){
+                    productOptions.push(variant.title);
+                }
+            }
+            suiteSelects.forEach( select => {
+                select.addEventListener('change', function(e){
+                    checkSuiteSelects();
+                });
+            });
+        })
+        .catch(error => console.log('err:: ' + error));
+
+    submitButton.addEventListener('click', function(e){
+        e.preventDefault();
+        getVariantData('{{ handle }}');
+    });
+
+    preorderButton.addEventListener('click', function(e){
+        e.preventDefault();
+        getVariantData('{{ handle }}');
+    });
+
+    clearButtons.forEach( button => button.addEventListener('click', function(){
+        let index = button.dataset.index;
+        let select = suiteSelects[index - 1];
+        clearSelect(select);
+    }))
+
+
+    function checkSuiteSelects(){
+        selectedOptions = [];
+        filledOptions = [];
+        availableVariantsArray = [];
+        uniqueAvailableVariantsArray = [];
+
+        for (select of suiteSelects){
+            selectedOptions.push(select.value);
+            if (!select.value.includes(':')){
+                filledOptions.push(select.value);
+                clearButtons[select.dataset.index - 1].style.opacity = '1';
+                clearButtons[select.dataset.index - 1].style.visibility = 'visible';
+            } else {
+                clearButtons[select.dataset.index - 1].style.opacity = '0';
+                clearButtons[select.dataset.index - 1].style.visibility = 'hidden';
+            }
+        }
+
+        let unselected = element => element.includes(':');
+        let optionsNotFilled = selectedOptions.some(unselected);
+        
+        if (optionsNotFilled){
+            submitButton.disabled = true;
+            submitButton.value = 'Select Size';  
+        } else {
+            checkVariantInventory(selectedOptions);       
+        }
+
+        checkExistingVariants(filledOptions);
+    }
+
+    function checkExistingVariants(filledOptions){
+
+        let filteredOptions = productOptions.filter(option => {
+            return filledOptions.every(value => option.split(' / ').includes(value))
+        });
+
+        disableVariants(filteredOptions)
+    }
+
+    function setPreorderButton(){
+        submitButton.style.display = 'none';
+        preorderButton.style.display = 'block';
+        let preOrder = document.createElement('span');
+        preOrder.textContent = 'While we try to be as accurate as possible, this is an estimated ship date; actual ship date may be within 1-2 weeks of stated date.';
+        relatedForm.appendChild(preOrder);
+    }
+
+    function checkVariantInventory(selectedOptions){
+        loading = true;
+        submitButton.value = 'SEARCHING...';
+        selectedVariant = productVariants.find(variant => variant.options.every((element, index) => element === selectedOptions[index]));
+       
+        if (selectedVariant){
+            if (selectedVariant.available){
+                loading = false;
+                submitButton.disabled = false;
+                if (selectedVariant.inventory_quantity <= 0){
+                    setPreorderButton();
+                } else {
+                    submitButton.value = 'Add to cart'; 
+                }
+        }   else {
+                loading = false;
+                submitButton.disabled = true;
+                submitButton.value = 'OUT OF STOCK'; 
+            } 
+        } else {
+            loading = false;
+            submitButton.disabled = true;
+            submitButton.value = 'VARIANT NOT FOUND'; 
+        } 
+    }
+
+    function getVariantData(handle){
+        let options = selectedOptions;
+        let optionsLength = selectedOptions.length;
+        selectedVariant = productVariants.find(variant => variant.options.every((element, index) => element === selectedOptions[index]));
+        selectedVariantID = selectedVariant.id;
+
+        postVariantToCart(selectedVariantID);
+    }
+
+    function disableVariants(filteredOptions){
+        let availableValues = [];
+        let unavailableOptions = [];
+        let availableOptions = [];
+
+        for (filteredOption of filteredOptions){
+            filteredOption.split(' / ').forEach(value => availableValues.push(value));
+        }
+        let uniqueAvailableValues = [...new Set(availableValues)];
+
+        for (option of suiteOptions){
+            if (uniqueAvailableValues.indexOf(option.textContent.trim()) === -1){
+                unavailableOptions.push(option);
+            } else {
+                availableOptions.push(option);
+            }
+        }
+        for (option of unavailableOptions){
+            option.disabled = true;
+        }
+
+        for (option of availableOptions){
+            option.disabled = false;
+        }
+    }
+
+    function clearSelect(select){
+        select.value = select.querySelector('option').value;
+        if (document.querySelector('.related-product__submit--preorder + span') !== null){
+            document.querySelector('.related-product__submit--preorder + span').remove();
+        }
+        preorderButton.style.display = 'none';
+        submitButton.style.display = 'block';
+        checkSuiteSelects();
+    }
+
+    function getSectionsToRender() {
+        return [
+          {
+            id: 'cart-drawer',
+            selector: '#CartDrawer',
+          },
+          {
+            id: 'cart-icon-bubble',
+          },
+        ];
+    }
+
+    function postVariantToCart(id){
+        loading = true;
+        submitButton.value = 'ADDING...';
+        var cartDrawer = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+        var cartForm= document.querySelector('.suite-builder form');
+        
+        const formData = [{
+            'id': id,
+            'quantity': 1
+        }]; 
+        const formDataLook = new FormData(cartForm);
+        formDataLook.append( 'sections', cartDrawer.getSectionsToRender().map((section) => section.id));
+        formDataLook.append( 'id', id);
+
+        const config = fetchConfig('javascript');
+        config.headers['X-Requested-With'] = 'XMLHttpRequest';
+        delete config.headers['Content-Type'];
+        
+        config.body = formDataLook;
+
+        fetch(`${routes.cart_add_url}`, config)
+        .then((response) => response.json())
+        .then((response) => {
+            loading = false;
+            submitButton.value = 'ADDED';
+            cartDrawer.classList.add('animate', 'active');
+
+            if(cartDrawer.classList.contains('is-empty')){
+                cartDrawer.classList.remove('is-empty');
+            }
+            cartDrawer.renderContents(response);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+</script>

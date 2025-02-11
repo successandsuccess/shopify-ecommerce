@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-register",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 96,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 74
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

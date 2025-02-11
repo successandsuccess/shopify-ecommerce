@@ -1,0 +1,204 @@
+{{ 'message-band.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.message != blank %}
+
+  {% liquid
+    assign end_date = section.settings.end_date | replace: '/', ' ' | date: '%Y-%m-%d %H:%M' | date: '%s'
+    assign today_date = 'now' | date: '%Y-%m-%d %H:%M' | date: '%s'
+    assign is_countdown_active = false
+    if today_date < end_date
+      assign is_countdown_active = true
+    endif
+  %}
+
+  <div
+    id="{{ section.id }}"
+    class="
+      js-message-band
+      color-{{ section.settings.color_scheme }}
+    "
+  >
+    <div class="message-band {{ section.settings.countdown_position }}">
+      {% assign message_not_link = true %}
+      {% if section.settings.message contains 'href' %}
+        {% assign message_not_link = false %}
+      {% endif %}
+
+      <div class="message-band__message-container page-width">
+        <h3 class="message">
+          {{ section.settings.message }}
+        </h3>
+        {% if is_countdown_active %}
+          <div class="js-message-band__countdown-timer"
+            data-end-date="{{ section.settings.end_date | replace: "/", " " | date: "%Y-%m-%d %H:%M" | date: "%s"}}">
+            <div class="message-band__countdown-indicator {{section.settings.show_days}}">
+              <span class="days value"></span>
+              <span class="indicator">Days</span>
+            </div>
+            <div class="message-band__countdown-indicator">
+              <span class="hours value"></span>
+              <span class="indicator">Hours</span>
+            </div>
+            <div class="message-band__countdown-indicator">
+              <span class="minutes value"></span>
+              <span class="indicator">Minutes</span>
+            </div>
+            <div class="message-band__countdown-indicator">
+              <span class="seconds value"></span>
+              <span class="indicator">Seconds</span>
+            </div>
+          </div>
+        {% elsif section.settings.link != blank and section.settings.link_label.size > 0 %}
+            <a
+              href="{{ section.settings.link }}"
+            >
+              {{- section.settings.link_label -}}
+            </a>
+        {% endif %}
+      </div>
+
+      {% if section.settings.link != blank and section.settings.link_label.size == 0 and message_not_link %}
+        <a class="full-link" href="{{ section.settings.link }}"></a>
+      {% endif %}
+    </div>
+  </div>
+
+{% endif %}
+
+<script>
+
+  /**
+   * 
+   * Countdown functionality
+   * @borrowed https://www.w3schools.com/howto/howto_js_countdown.asp
+   * 
+   **/
+
+  const countdownTimer = document.querySelector('.js-message-band__countdown-timer');
+  let daysEl = '';
+  let hoursEl = '';
+  let minutesEl = '';
+  let countdownDate = '';
+  let timerInterval = {};
+
+  countdownHandler = () => {
+    let now = new Date().getTime();
+    let distance = countdownDate - now;
+      
+    // Time calculations for days, hours, minutes and seconds
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    daysEl.innerHTML = days;
+    hoursEl.innerHTML = hours;
+    minutesEl.innerHTML = minutes;
+    secondsEl.innerHTML = seconds;
+      
+    if (distance < 0) {
+      clearInterval(timerInterval);
+      daysEl.innerHTML = 0;
+      hoursEl.innerHTML = 0;
+      minutesEl.innerHTML = 0;
+      secondsEl.innerHTML = 0;
+    }
+  }
+  
+  if (countdownTimer) {
+    daysEl = countdownTimer.querySelector('.days');
+    hoursEl = countdownTimer.querySelector('.hours');
+    minutesEl = countdownTimer.querySelector('.minutes');
+    secondsEl = countdownTimer.querySelector('.seconds');
+    // Multiplying by 1000 to get milliseconds
+    countdownDate = countdownTimer.dataset.endDate * 1000;
+    countdownHandler();
+    timerInterval = setInterval(countdownHandler, 1000);
+  }
+  // End countdown functionality
+
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.message-band.name",
+  "tag": "section",
+  "class": "section section--product-grid",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-3"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "message",
+      "label": "Message",
+      "default": "This is the message"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.message-band.settings.link.label",
+      "info": "Fills entire banner when message doesn't include a link, and link label is blank."
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.message-band.countdown_timer.header"
+    },
+    {
+      "type": "select",
+      "id": "show_days",
+      "label": "Show days",
+      "options": [
+        {
+          "value": "show",
+          "label": "Yes"
+        },
+        {
+          "value": "hidden",
+          "label": "No"
+        }
+      ],
+      "default": "hidden"
+    },
+    {
+      "type": "radio",
+      "id": "countdown_position",
+      "label": "Countdown Position",
+      "options": [
+        {
+          "value": "centered",
+          "label": "Centered"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "centered"
+    },
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "t:sections.message-band.settings.end_date.label",
+      "info": "t:sections.message-band.settings.end_date.info",
+      "placeholder": "YYYY-MM-DD/HH:MM"
+    },
+  ],
+  "presets": [
+    {
+      "name": "t:sections.message-band.name"
+    }
+  ]
+}
+{% endschema %}

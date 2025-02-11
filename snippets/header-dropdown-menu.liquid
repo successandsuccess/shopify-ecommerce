@@ -1,0 +1,131 @@
+{% comment %}
+  Renders a standard dropdown style menu for the header.
+
+  Usage:
+  {% render 'header-dropdown-menu' %}
+{% endcomment %}
+
+{%- capture availability_filter_load -%}
+  {%- render 'availability-filter-check' -%}
+{%- endcapture -%}
+
+<nav class="header__inline-menu dropdown-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      {% assign link_title = link.title | handleize %}
+      {% capture int_links %}
+        {% if link.url contains 'https://' or link.url contains 'http://' or link.url contains '#' %}
+          {% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}{{ link.url }}{{ availability_filter_load }}{% else %}{{ link.url }}{% endif %}{% else %}{{ link.url }}{% endunless %}
+        {% else %}
+          {% unless link.url contains 'products' and link.url contains 'collection' %}{% if link.type == 'collection_link' or link.url contains 'collections' %}{{ shop.url }}{{ link.url }}{{ availability_filter_load }}{% else %}{{ shop.url }}{{ link.url }}{% endif %}{% else %}{{ shop.url }}{{ link.url }}{% endunless %}
+        {% endif %}
+      {% endcapture %}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset{% if link_title contains 'sale' or link_title contains 'deal' %} sale-text{% endif %}"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title -}}
+                </span>
+                {% render 'icon-caret' %}
+              </summary>
+              <ul
+                id="HeaderMenu-MenuList-{{ forloop.index }}"
+                class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
+                role="list"
+                tabindex="-1"
+              >
+                {%- for childlink in link.links -%}
+                  {% capture child_links %}
+                      {% if childlink.url contains 'https://' or childlink.url contains 'http://' or childlink.url contains '#' %}
+                        {% unless childlink.url contains 'products' and childlink.url contains 'collection' %}{% if childlink.type == 'collection_link' or childlink.url contains 'collections' %}{{ childlink.url }}{{ availability_filter_load }}{% else %}{{ childlink.url }}{% endif %}{% else %}{{ childlink.url }}{% endunless %}
+                      {% else %}
+                        {% unless childlink.url contains 'products' and childlink.url contains 'collection' %}{% if childlink.type == 'collection_link' or childlink.url contains 'collections' %}{{ shop.url }}{{ childlink.url }}{{ availability_filter_load }}{% else %}{{ shop.url }}{{ childlink.url }}{% endif %}{% else %}{{ shop.url }}{{ childlink.url }}{% endunless %}
+                      {% endif %}
+                    {% endcapture %}
+                  <li>
+                    {%- if childlink.links == blank -%}
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ child_links }}"
+                        {% if child_links contains shop.url or child_links contains '#' %}{% else %}target="_blank"{% endif %}
+                        class="header__menu-item list-menu__item link link--text focus-inset caption-large"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title }}
+                      </a>
+                    {%- else -%}
+                      <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
+                        <summary
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          class="header__menu-item link link--text list-menu__item focus-inset caption-large"
+                        >
+                          <span>{{ childlink.title }}</span>
+                          {% render 'icon-caret' %}
+                        </summary>
+                        <ul
+                          id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                          class="header__submenu list-menu motion-reduce"
+                        >
+                          {%- for grandchildlink in childlink.links -%}
+                            {% capture grandchild_links %}
+                              {% if grandchildlink.url contains 'https://' or grandchildlink.url contains 'http://' or grandchildlink.url contains '#' %}
+                                {% unless grandchildlink.url contains 'products' and grandchildlink.url contains 'collection' %}{% if link.type == 'collection_link' or grandchildlink.url contains 'collections' %}{{ grandchildlink.url }}{{ availability_filter_load }}{% else %}{{ grandchildlink.url }}{% endif %}{% else %}{{ grandchildlink.url }}{% endunless %}
+                              {% else %}
+                                {% unless grandchildlink.url contains 'products' and grandchildlink.url contains 'collection' %}{% if link.type == 'collection_link' or grandchildlink.url contains 'collections' %}{{ shop.url }}{{ grandchildlink.url }}{{ availability_filter_load }}{% else %}{{ shop.url }}{{ grandchildlink.url }}{% endif %}{% else %}{{ shop.url }}{{ grandchildlink.url }}{% endunless %}
+                              {% endif %}
+                            {% endcapture %}
+                            <li>
+                              <a
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchild_links }}"
+                                {% if grandchild_links contains shop.url or grandchild_links contains '#' %}{% else %}target="_blank"{% endif %}
+                                class="header__menu-item list-menu__item link link--text focus-inset caption-large"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ grandchildlink.title }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </details>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </details>
+          </header-menu>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ int_links }}" {% if int_links contains shop.url or int_links contains '#' %}{% else %}target="_blank"{% endif %}
+            class="header__menu-item list-menu__item link link--text focus-inset{% if link_title contains 'sale' or link_title contains 'deal' %} sale-text{% endif %}"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
